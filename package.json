@@ -1,0 +1,56 @@
+{
+  "name": "my-templates",
+  "version": "1.0.0",
+  "description": "Template and starter scaffolds with comprehensive guardrails",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "test": "vitest run",
+    "test:unit": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:smoke": "playwright test --grep @smoke",
+    "test:watch": "vitest",
+    "type-check": "tsc --noEmit",
+    "build": "tsc && vite build",
+    "validate:branch": "node scripts/validate-branch.js",
+    "validate:release-notes": "node scripts/validate-release-notes.js",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "sendit": "node scripts/sendit.js"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vitest/coverage-v8": "^1.0.4",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vitest": "^1.0.4"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

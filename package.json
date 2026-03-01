@@ -17,7 +17,9 @@
     "build": "tsc && vite build",
     "validate:branch": "node scripts/validate-branch.js",
     "validate:release-notes": "node scripts/validate-release-notes.js",
-    "prepare": "husky install",
+    "validate": "npm run lint && npm run type-check && npm test",
+    "sync-instructions": "node scripts/sync-instructions.js",
+    "prepare": "husky install && node scripts/sync-instructions.js",
     "pre-commit": "lint-staged",
     "sendit": "node scripts/sendit.js"
   },

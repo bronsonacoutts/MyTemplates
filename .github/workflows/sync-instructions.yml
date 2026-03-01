@@ -1,0 +1,53 @@
+name: Sync Instructions
+
+on:
+  push:
+    paths:
+      - 'agent-instructions.md'
+      - '.github/copilot-instructions.md'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Sync agent-instructions.md ↔ copilot-instructions.md
+    runs-on: ubuntu-latest
+    # Skip on commits made by the workflow itself to prevent infinite loops
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run sync script
+        run: node scripts/sync-instructions.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit synced file
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add agent-instructions.md .github/copilot-instructions.md
+          git commit -m "chore: sync agent-instructions.md and copilot-instructions.md [skip ci]"
+          git push

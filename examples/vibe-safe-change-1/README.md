@@ -89,13 +89,13 @@ npm run validate
 
 ### What the guardrails check
 
-| Guardrail | Result | Why |
-|---|---|---|
-| ESLint | **Pass** | No `any`, no `console.log`, proper imports |
+| Guardrail         | Result   | Why                                                  |
+| ----------------- | -------- | ---------------------------------------------------- |
+| ESLint            | **Pass** | No `any`, no `console.log`, proper imports           |
 | TypeScript strict | **Pass** | Return type is explicit `string`, parameter is typed |
-| Vitest | **Pass** | All 7 tests pass, no network calls involved |
-| Coverage | **Pass** | New function is fully covered |
-| JSDoc | **Pass** | `@param`, `@returns`, and `@example` present |
+| Vitest            | **Pass** | All 7 tests pass, no network calls involved          |
+| Coverage          | **Pass** | New function is fully covered                        |
+| JSDoc             | **Pass** | `@param`, `@returns`, and `@example` present         |
 
 ## Step 4 — Walk the checklist
 
@@ -134,4 +134,4 @@ The PR template's AI-Assisted Changes section:
 
 The AI output was clean in this case — but the guardrails verified it automatically.
 If the AI had used `any`, skipped JSDoc, or left a `console.log`, the validation
-would have failed *before* the code left your machine.
+would have failed _before_ the code left your machine.

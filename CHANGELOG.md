@@ -10,21 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Nothing yet.
 
 ### Changed
+
 - Nothing yet.
 
 ### Deprecated
+
 - Nothing yet.
 
 ### Removed
+
 - Nothing yet.
 
 ### Fixed
+
 - Nothing yet.
 
 ### Security
+
 - Nothing yet.
 
 ---
@@ -32,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2026-06-14 (Vibe coding portfolio refresh)
 
 ### Added
+
 - [vibe-coding/](vibe-coding/) folder with prompt templates, guardrails, and example walkthroughs.
 - Five prompt templates: add-feature, bugfix, repo-refactor, documentation, pr-description-changelog.
 - AI change checklist ([vibe-coding/guardrails/ai-change-checklist.md](vibe-coding/guardrails/ai-change-checklist.md)) for pre-commit review of AI-generated code.
@@ -45,10 +52,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Vibe coding quick start and AI tool guidance in [docs/USAGE.md](docs/USAGE.md).
 
 ### Changed
+
 - README rewritten around vibe coding enablement with full catalogue, guardrails table, flagship packs, and quickstart.
 - CONTRIBUTING.md updated with AI-assisted PR rules and recommended workflow.
 
 ### Fixed
+
 - Removed duplicate content in CHANGELOG.md.
 
 ---
@@ -56,6 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-03-02 (Portfolio refresh)
 
 ### Added
+
 - Repository catalogue and safety guidance in [README](README.md).
 - Usage path, style guide, and pattern index in [docs/USAGE.md](docs/USAGE.md), [docs/STYLE_GUIDE.md](docs/STYLE_GUIDE.md), and [docs/PATTERNS.md](docs/PATTERNS.md).
 - Runnable examples in [examples/no-network-unit-tests.md](examples/no-network-unit-tests.md) and [examples/playwright-accessibility-smoke.md](examples/playwright-accessibility-smoke.md).
@@ -63,10 +73,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI enhancements: markdown lint and gitleaks secret scan in [.github/workflows/ci.yml](.github/workflows/ci.yml).
 
 ### Changed
+
 - README tone and quickstart to emphasise portfolio-grade patterns and safety.
 - Added `lint:md` script for local markdown hygiene in [package.json](package.json).
 
 ### Fixed
+
 - Prevented accidental markdown drift by codifying line-length expectations.
 
 ---
@@ -74,6 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2024-01-01
 
 ### Added
+
 - Initial project template structure with TypeScript/Node.js scaffold.
 - Comprehensive ESLint configuration with `@typescript-eslint` and Prettier integration.
 - Vitest configuration with 80% coverage thresholds (lines, functions, statements) and 75% branch coverage.

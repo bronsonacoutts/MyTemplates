@@ -8,17 +8,18 @@
 
 Releases follow [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`):
 
-| Version bump | When |
-|---|---|
-| `PATCH` (1.0.**x**) | Backwards-compatible bug fixes |
+| Version bump        | When                              |
+| ------------------- | --------------------------------- |
+| `PATCH` (1.0.**x**) | Backwards-compatible bug fixes    |
 | `MINOR` (1.**x**.0) | New backwards-compatible features |
-| `MAJOR` (**x**.0.0) | Breaking changes |
+| `MAJOR` (**x**.0.0) | Breaking changes                  |
 
 ---
 
 ## Prerequisites
 
 Before starting a release, ensure:
+
 - [ ] `develop` branch is stable and all CI checks pass.
 - [ ] All intended features/fixes for this release are merged to `develop`.
 - [ ] `CHANGELOG.md` has an `[Unreleased]` section with all changes documented.
@@ -52,9 +53,11 @@ Move items from `[Unreleased]` to a new versioned section:
 ## [X.Y.Z] - YYYY-MM-DD
 
 ### Added
+
 - ...
 
 ### Fixed
+
 - ...
 ```
 
@@ -63,6 +66,7 @@ Add/update the comparison links at the bottom of the file.
 ### 4. Update RELEASE_NOTES.md
 
 Replace the content with a human-readable summary of this release:
+
 - `## Changes` — what's new or changed
 - `## Breaking Changes` — any breaking changes and migration steps
 
@@ -93,6 +97,7 @@ git push origin vX.Y.Z
 ```
 
 Pushing the tag triggers the **release workflow** (`.github/workflows/release.yml`), which:
+
 1. Runs the full CI suite (lint, type-check, test, build).
 2. Validates `RELEASE_NOTES.md`.
 3. Creates a GitHub Release with the content of `RELEASE_NOTES.md`.

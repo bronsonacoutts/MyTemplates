@@ -7,11 +7,11 @@ practical and safe. Use them with GitHub Copilot, ChatGPT, Claude, or any LLM-ba
 
 ## Structure
 
-| Folder | What's inside | Start here |
-|---|---|---|
-| [prompts/](prompts/) | Markdown prompt templates for common tasks | [add-feature.md](prompts/add-feature.md) |
-| [guardrails/](guardrails/) | Checklists and review rubrics for AI-generated code | [ai-change-checklist.md](guardrails/ai-change-checklist.md) |
-| [examples/](examples/) | Before/after walkthroughs showing guardrails in action | [lint-catch/](examples/lint-catch/) |
+| Folder                     | What's inside                                          | Start here                                                  |
+| -------------------------- | ------------------------------------------------------ | ----------------------------------------------------------- |
+| [prompts/](prompts/)       | Markdown prompt templates for common tasks             | [add-feature.md](prompts/add-feature.md)                    |
+| [guardrails/](guardrails/) | Checklists and review rubrics for AI-generated code    | [ai-change-checklist.md](guardrails/ai-change-checklist.md) |
+| [examples/](examples/)     | Before/after walkthroughs showing guardrails in action | [lint-catch/](examples/lint-catch/)                         |
 
 ## Quick start
 

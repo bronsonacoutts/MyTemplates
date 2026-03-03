@@ -4,7 +4,7 @@
 **Date:** YYYY-MM-DD  
 **Deciders:** @username1, @username2  
 **Supersedes:** (none) | ADR-XXXX  
-**Superseded by:** (none) | ADR-XXXX  
+**Superseded by:** (none) | ADR-XXXX
 
 ---
 
@@ -53,9 +53,11 @@
 [Brief description]
 
 **Pros:**
+
 - ...
 
 **Cons:**
+
 - ...
 
 ### Option B: [Name]
@@ -63,9 +65,11 @@
 [Brief description]
 
 **Pros:**
+
 - ...
 
 **Cons:**
+
 - ...
 
 ### Option C: [Name]
@@ -73,9 +77,11 @@
 [Brief description]
 
 **Pros:**
+
 - ...
 
 **Cons:**
+
 - ...
 
 ---

@@ -114,12 +114,12 @@ Edit the `$governedDocPattern` in `Test-CommitPolicy.ps1` to define which doc ch
 
 ## Enforcement Summary
 
-| Gate | Script | Trigger |
-|---|---|---|
-| Commit message requires `AB#<id>` | `Test-CommitMessage.ps1` | `commit-msg` git hook |
-| Branch naming + protected branch guard | `Test-CommitPolicy.ps1` | Called by `Invoke-Stampit.ps1` |
-| No direct push to `main`/`release/*` | `Test-PushPolicy.ps1` | `pre-push` git hook |
-| PR readiness before PR creation | `Test-PullRequestReadiness.ps1` | Called by `Invoke-Stampit.ps1` + `pre-push` |
+| Gate                                   | Script                          | Trigger                                     |
+| -------------------------------------- | ------------------------------- | ------------------------------------------- |
+| Commit message requires `AB#<id>`      | `Test-CommitMessage.ps1`        | `commit-msg` git hook                       |
+| Branch naming + protected branch guard | `Test-CommitPolicy.ps1`         | Called by `Invoke-Stampit.ps1`              |
+| No direct push to `main`/`release/*`   | `Test-PushPolicy.ps1`           | `pre-push` git hook                         |
+| PR readiness before PR creation        | `Test-PullRequestReadiness.ps1` | Called by `Invoke-Stampit.ps1` + `pre-push` |
 
 ---
 
@@ -135,12 +135,12 @@ Edit the `$governedDocPattern` in `Test-CommitPolicy.ps1` to define which doc ch
 
 ## Environment Variables
 
-| Variable | Purpose |
-|---|---|
-| `AZDO_PAT` | ADO Personal Access Token (required) |
+| Variable                             | Purpose                                                               |
+| ------------------------------------ | --------------------------------------------------------------------- |
+| `AZDO_PAT`                           | ADO Personal Access Token (required)                                  |
 | `REPO_ALLOW_PROTECTED_BRANCH_COMMIT` | Set to `1` to override protected-branch commit block (emergency only) |
-| `REPO_ALLOW_PROTECTED_BRANCH_PUSH` | Set to `1` to override protected-branch push block (emergency only) |
-| `REPO_ALLOW_GENERATED_ARTIFACTS` | Set to `1` to allow generated artifact files in commits |
+| `REPO_ALLOW_PROTECTED_BRANCH_PUSH`   | Set to `1` to override protected-branch push block (emergency only)   |
+| `REPO_ALLOW_GENERATED_ARTIFACTS`     | Set to `1` to allow generated artifact files in commits               |
 
 ---
 

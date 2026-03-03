@@ -22,12 +22,13 @@ Authorization: Bearer <token>
 
 ### Rate Limiting
 
-| Tier | Requests per minute |
-|---|---|
-| Standard | 60 |
-| Premium | 600 |
+| Tier     | Requests per minute |
+| -------- | ------------------- |
+| Standard | 60                  |
+| Premium  | 600                 |
 
 Rate limit headers are included in every response:
+
 - `X-RateLimit-Limit`
 - `X-RateLimit-Remaining`
 - `X-RateLimit-Reset`
@@ -46,14 +47,14 @@ All errors follow this structure:
 }
 ```
 
-| HTTP Status | Error Code | Meaning |
-|---|---|---|
-| 400 | `VALIDATION_ERROR` | Request body failed validation |
-| 401 | `UNAUTHORIZED` | Missing or invalid authentication |
-| 403 | `FORBIDDEN` | Authenticated but not authorized |
-| 404 | `RESOURCE_NOT_FOUND` | Resource does not exist |
-| 429 | `RATE_LIMITED` | Too many requests |
-| 500 | `INTERNAL_ERROR` | Unexpected server error |
+| HTTP Status | Error Code           | Meaning                           |
+| ----------- | -------------------- | --------------------------------- |
+| 400         | `VALIDATION_ERROR`   | Request body failed validation    |
+| 401         | `UNAUTHORIZED`       | Missing or invalid authentication |
+| 403         | `FORBIDDEN`          | Authenticated but not authorized  |
+| 404         | `RESOURCE_NOT_FOUND` | Resource does not exist           |
+| 429         | `RATE_LIMITED`       | Too many requests                 |
+| 500         | `INTERNAL_ERROR`     | Unexpected server error           |
 
 ---
 
@@ -65,12 +66,12 @@ Retrieves a paginated list of resources.
 
 **Query Parameters**
 
-| Parameter | Type | Required | Default | Description |
-|---|---|---|---|---|
-| `page` | `number` | No | `1` | Page number (1-indexed) |
-| `limit` | `number` | No | `20` | Results per page (max 100) |
-| `sort` | `string` | No | `createdAt` | Field to sort by |
-| `order` | `asc` \| `desc` | No | `desc` | Sort order |
+| Parameter | Type            | Required | Default     | Description                |
+| --------- | --------------- | -------- | ----------- | -------------------------- |
+| `page`    | `number`        | No       | `1`         | Page number (1-indexed)    |
+| `limit`   | `number`        | No       | `20`        | Results per page (max 100) |
+| `sort`    | `string`        | No       | `createdAt` | Field to sort by           |
+| `order`   | `asc` \| `desc` | No       | `desc`      | Sort order                 |
 
 **Response `200 OK`**
 
@@ -100,9 +101,9 @@ Retrieves a single resource by ID.
 
 **Path Parameters**
 
-| Parameter | Type | Description |
-|---|---|---|
-| `id` | `string` (UUID) | The resource ID |
+| Parameter | Type            | Description     |
+| --------- | --------------- | --------------- |
+| `id`      | `string` (UUID) | The resource ID |
 
 **Response `200 OK`**
 
@@ -130,10 +131,10 @@ Creates a new resource.
 }
 ```
 
-| Field | Type | Required | Constraints |
-|---|---|---|---|
-| `name` | `string` | Yes | 1–100 characters |
-| `description` | `string` | No | Max 500 characters |
+| Field         | Type     | Required | Constraints        |
+| ------------- | -------- | -------- | ------------------ |
+| `name`        | `string` | Yes      | 1–100 characters   |
+| `description` | `string` | No       | Max 500 characters |
 
 **Response `201 Created`**
 
@@ -179,11 +180,11 @@ Deletes a resource.
 
 ```typescript
 interface Resource {
-  id: string;          // UUID v4
-  name: string;        // 1–100 characters
+  id: string; // UUID v4
+  name: string; // 1–100 characters
   description?: string; // Optional, max 500 characters
-  createdAt: string;   // ISO 8601 datetime
-  updatedAt: string;   // ISO 8601 datetime
+  createdAt: string; // ISO 8601 datetime
+  updatedAt: string; // ISO 8601 datetime
 }
 ```
 
@@ -191,6 +192,6 @@ interface Resource {
 
 ## Changelog
 
-| Version | Date | Changes |
-|---|---|---|
-| 1.0.0 | YYYY-MM-DD | Initial API documentation |
+| Version | Date       | Changes                   |
+| ------- | ---------- | ------------------------- |
+| 1.0.0   | YYYY-MM-DD | Initial API documentation |

@@ -100,11 +100,11 @@ describe('getUser', () => {
 
 ## What changed and why
 
-| AI output | Issue | Fix |
-|---|---|---|
-| No mock for `fetch` | Real network call blocked by `test/setup.ts` | Added `vi.fn()` mock for `fetch` |
-| Single happy-path test | Doesn't cover error scenarios | Added 404 error-path test |
-| No assertion on call args | Doesn't verify the correct URL was called | Added `toHaveBeenCalledWith` |
+| AI output                 | Issue                                        | Fix                              |
+| ------------------------- | -------------------------------------------- | -------------------------------- |
+| No mock for `fetch`       | Real network call blocked by `test/setup.ts` | Added `vi.fn()` mock for `fetch` |
+| Single happy-path test    | Doesn't cover error scenarios                | Added 404 error-path test        |
+| No assertion on call args | Doesn't verify the correct URL was called    | Added `toHaveBeenCalledWith`     |
 
 ## Takeaway
 

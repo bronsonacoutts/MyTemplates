@@ -5,25 +5,28 @@
  * Ensures release notes exist and follow the required format
  */
 
-const fs = require('fs');
-const path = require('path');
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const RELEASE_NOTES_PATH = path.join(__dirname, '..', 'RELEASE_NOTES.md');
+const RELEASE_NOTES_PATH = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  'RELEASE_NOTES.md'
+);
 
 try {
   // Check if release notes file exists
-  if (!fs.existsSync(RELEASE_NOTES_PATH)) {
+  if (!existsSync(RELEASE_NOTES_PATH)) {
     console.warn('⚠️  RELEASE_NOTES.md not found. Create one for the next release.');
     process.exit(0); // Don't fail, just warn
   }
 
-  const content = fs.readFileSync(RELEASE_NOTES_PATH, 'utf-8');
+  const content = readFileSync(RELEASE_NOTES_PATH, 'utf-8');
 
   // Check for required sections
   const requiredSections = ['## Changes', '## Breaking Changes'];
-  const missingSections = requiredSections.filter(
-    (section) => !content.includes(section)
-  );
+  const missingSections = requiredSections.filter((section) => !content.includes(section));
 
   if (missingSections.length > 0) {
     console.error(`

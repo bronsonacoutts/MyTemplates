@@ -9,7 +9,7 @@ The `stampit` trigger (`Invoke-Stampit.ps1`) replaces raw `git commit` for all d
 1. Detects all dirty/staged files in your workspace.
 2. Groups them into logical commit bundles by topic (heuristic + user confirmation).
 3. For each bundle — resolves or creates an ADO work item (`AB#<id>`).
-4. Creates a strategy-compliant branch (`feature|bugfix|hotfix|chore/<id>-<slug>`).
+4. Creates a strategy-compliant branch (`feature|fix|hotfix|chore/<id>-<slug>`).
 5. Runs policy checks (`Test-CommitPolicy.ps1`) before committing.
 6. Commits with `AB#<id>` embedded in the message.
 7. Pushes the branch, runs PR readiness checks, opens a PR.

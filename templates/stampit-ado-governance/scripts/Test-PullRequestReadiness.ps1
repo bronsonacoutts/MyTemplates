@@ -51,7 +51,7 @@ function Get-CurrentBranch {
 function Test-BranchName {
     param([string]$Branch)
     $patterns = @(
-        '^(feature|bugfix|hotfix|chore)/[0-9]+-[a-z0-9][a-z0-9-]*$',
+        '^(feature|fix|hotfix|chore)/[0-9]+-[a-z0-9][a-z0-9-]*$',
         '^release/[a-z0-9][a-z0-9.\-]*$'
     )
     foreach ($pattern in $patterns) {
@@ -84,7 +84,7 @@ Write-Info "Validating PR readiness: $SourceBranch -> $TargetBranch"
 $errors = New-Object System.Collections.Generic.List[string]
 
 if (-not (Test-BranchName -Branch $SourceBranch)) {
-    $errors.Add("Source branch '$SourceBranch' does not match repository naming rules (feature|bugfix|hotfix|chore/<id>-<slug>).")
+    $errors.Add("Source branch '$SourceBranch' does not match repository naming rules (feature|fix|hotfix|chore/<id>-<slug>).")
 }
 
 $files = [string[]](Get-ChangedFiles -TargetRef $TargetBranch)

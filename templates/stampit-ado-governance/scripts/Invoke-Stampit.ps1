@@ -8,7 +8,7 @@ Stamps pending workspace changes into one or more governed commits, branches, wo
 When invoked, this script:
   1. Inspects all dirty (unstaged, staged, and untracked) files in the workspace.
   2. Groups them into logical commit bundles based on topic area (heuristic + user confirmation).
-    3. For each bundle:
+  3. For each bundle:
      a. Determines or creates an ADO work item (Task / Bug / Feature / User Story) with enriched
         title, description, area path, iteration path, and tags.
      b. If a work item is created, sets its state to Active.

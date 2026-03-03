@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "types": ["vitest/globals", "@playwright/test", "node"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "test/**/*.ts",
+    "test/**/*.tsx",
+    "scripts/**/*.js",
+    "scripts/**/*.ts",
+    "playwright.config.ts",
+    "vitest.config.ts",
+    "commitlint.config.cjs"
+  ]
+}

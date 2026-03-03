@@ -47,7 +47,7 @@ jobs:
           BRANCH="${{ github.head_ref }}"
           echo "Validating branch name: $BRANCH"
 
-          PATTERN="^(feature|fix|hotfix|release|docs|refactor|test|chore|copilot)\/[a-z0-9][a-z0-9\-]*[a-z0-9]$"
+          PATTERN="^(feature|fix|hotfix|release|docs|refactor|test|chore|copilot|codex)\/[a-z0-9][a-z0-9\-]*[a-z0-9]$"
 
           if [[ "$BRANCH" =~ $PATTERN ]]; then
             echo "✅ Branch name '$BRANCH' is valid."
@@ -55,7 +55,7 @@ jobs:
             echo "❌ Branch name '$BRANCH' does not match the required pattern."
             echo ""
             echo "Branch names must follow the pattern: <prefix>/<description>"
-            echo "Allowed prefixes: feature, fix, hotfix, release, docs, refactor, test, chore, copilot"
-            echo "Description must be lowercase kebab-case (e.g., feature/add-user-auth)"
-            exit 1
+          echo "Allowed prefixes: feature, fix, hotfix, release, docs, refactor, test, chore, copilot, codex"
+          echo "Description must be lowercase kebab-case (e.g., feature/add-user-auth)"
+          exit 1
           fi

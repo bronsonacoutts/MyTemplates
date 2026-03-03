@@ -5,7 +5,7 @@
  * Ensures branch names follow conventional naming patterns
  */
 
-const { execSync } = require('child_process');
+import { execSync } from 'node:child_process';
 
 const VALID_PATTERNS = [
   /^feature\/.+/,
@@ -17,6 +17,7 @@ const VALID_PATTERNS = [
   /^refactor\/.+/,
   /^test\/.+/,
   /^copilot\/.+/,
+  /^codex\/.+/,
   /^main$/,
   /^develop$/,
   /^staging$/,

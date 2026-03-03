@@ -5,7 +5,7 @@
  * Ensures platform-specific changes (web, mobile) are kept in sync
  */
 
-const { execSync } = require('child_process');
+import { execSync } from 'node:child_process';
 
 const tasks = [
   { name: 'Web Build', command: 'npm run build --workspace=web' },

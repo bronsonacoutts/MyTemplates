@@ -619,9 +619,14 @@ foreach ($topic in $groupKeys) {
         }
     }
 
+    # Derive the actual branch type from the chosen work item type (Bug => bugfix).
+    # When linking to an existing work item ($doCreate = $false) the type is unknown,
+    # so $suggestedBranchType (topic-based heuristic) is used unchanged.
+    $actualBranchType = if ($doCreate -and $wiType -eq 'Bug') { 'bugfix' } else { $suggestedBranchType }
+
     # Branch name
     $slug       = Convert-ToSlug -Text ($wiTitle ?? $suggestedTitle)
-    $branchName = "$suggestedBranchType/$wiId-$slug"
+    $branchName = "$actualBranchType/$wiId-$slug"
     if ($branchName.Length -gt 80) { $branchName = $branchName.Substring(0, 80).TrimEnd('-') }
     Write-Info "Branch: $branchName"
     if (-not $AutoWorkItems) { $branchName = Read-UserInput "  Confirm or override branch name" $branchName }
@@ -657,7 +662,7 @@ foreach ($topic in $groupKeys) {
     }
 
     # Commit
-    $commitMsg = "$suggestedBranchType`: $wiTitle AB#$wiId"
+    $commitMsg = "$actualBranchType`: $wiTitle AB#$wiId"
     if (-not $AutoWorkItems) { $commitMsg = Read-UserInput "  Commit message" $commitMsg }
 
     if ($WhatIfOnly) {

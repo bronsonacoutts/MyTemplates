@@ -62,13 +62,13 @@ $errors = New-Object 'System.Collections.Generic.List[string]'
 $branch = Get-CurrentBranch
 Write-Info "Validating commit policy on branch '$branch'"
 
-$workBranchPattern = '^(feature|bugfix|hotfix|chore)/[0-9]+-[a-z0-9][a-z0-9-]*$'
+$workBranchPattern = '^(feature|fix|hotfix|docs|refactor|test|chore|copilot)/[a-z0-9][a-z0-9-]*$'
 $releasePattern    = '^release/[a-z0-9][a-z0-9.\-]*$'
 $isMain            = $branch -eq 'main'
 $isRelease         = $branch -match $releasePattern
 
 if (-not ($branch -match $workBranchPattern -or $isMain -or $isRelease)) {
-    $errors.Add("Branch '$branch' does not match the required naming strategy (feature|bugfix|hotfix|chore/<id>-<slug> or release/<version>).")
+    $errors.Add("Branch '$branch' does not match the required naming strategy (<prefix>/<short-description> where prefix is one of feature|fix|hotfix|docs|refactor|test|chore|copilot, or release/<version>).")
 }
 
 if (($isMain -or $isRelease) -and [string]::IsNullOrWhiteSpace($env:REPO_ALLOW_PROTECTED_BRANCH_COMMIT)) {

@@ -1,0 +1,3 @@
+#!/bin/sh
+# pre-push hook — enforces push policy before any branch is pushed to remote.
+pwsh -NonInteractive -File "$(git rev-parse --show-toplevel)/scripts/Test-PushPolicy.ps1"

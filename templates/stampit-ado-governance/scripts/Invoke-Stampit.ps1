@@ -12,7 +12,7 @@ When invoked, this script:
      a. Determines or creates an ADO work item (Task / Bug / Feature / User Story) with enriched
         title, description, area path, iteration path, and tags.
      b. If a work item is created, sets its state to Active.
-     c. Creates a strategy-compliant branch (feature|bugfix|hotfix|chore/<id>-<slug>).
+     c. Creates a strategy-compliant branch (feature|fix|hotfix|chore/<id>-<slug>).
      d. Stages the files belonging to that bundle.
      e. Runs Test-CommitPolicy.ps1 to validate before committing.
      f. Commits with AB#<id> embedded in the message.
@@ -343,7 +343,7 @@ function Get-TopicForFile {
 
 function Get-WorkItemTypeForTopic {
     param([string]$Topic, [string]$BranchType)
-    if ($BranchType -eq 'bugfix') { return 'Bug' }
+    if ($BranchType -eq 'fix') { return 'Bug' }
     switch ($Topic) {
         'application-code' { return 'Feature'    }
         'test-code'        { return 'Task'        }
@@ -566,6 +566,10 @@ foreach ($topic in $groupKeys) {
     $suggestedWiType     = Get-WorkItemTypeForTopic -Topic $topic -BranchType $suggestedBranchType
     $suggestedTitle      = Get-SuggestedTitle -Topic $topic -Files $files
     $suggestedDesc       = Get-SuggestedDescription -Topic $topic -Files $files
+    $branchType          = $suggestedBranchType
+    $wiType              = $null
+    $wiTitle             = $null
+    $wiDesc              = $suggestedDesc
 
     Write-Info "Suggested work item type : $suggestedWiType"
     Write-Info "Suggested title          : $suggestedTitle"
@@ -588,6 +592,15 @@ foreach ($topic in $groupKeys) {
             $existingId = [int]$existingIdStr
             $doCreate   = $false
             Write-Info "Will link to existing work item #$existingId"
+            try {
+                $existingWi = Invoke-AdoGet -Uri "https://dev.azure.com/$Organization/_apis/wit/workitems/$existingId`?api-version=7.1" -Headers $headers
+                $wiType  = $existingWi.fields.'System.WorkItemType'
+                $wiTitle = $existingWi.fields.'System.Title'
+                Write-Info "Existing work item: [$wiType] $wiTitle"
+            } catch {
+                Write-Warn "Could not fetch existing work item #$existingId; using suggested defaults."
+                $wiType = $suggestedWiType
+            }
         } else {
             Write-Host ''
             $wiType   = Read-UserInput "  Work item type [Task / Bug / Feature / User Story]" $suggestedWiType
@@ -619,9 +632,13 @@ foreach ($topic in $groupKeys) {
         }
     }
 
+    if ($wiType -eq 'Bug') { $branchType = 'fix' }
+    if ([string]::IsNullOrWhiteSpace($branchType)) { $branchType = $suggestedBranchType }
+    if ([string]::IsNullOrWhiteSpace($wiTitle)) { $wiTitle = $suggestedTitle }
+
     # Branch name
     $slug       = Convert-ToSlug -Text ($wiTitle ?? $suggestedTitle)
-    $branchName = "$suggestedBranchType/$wiId-$slug"
+    $branchName = "$branchType/$wiId-$slug"
     if ($branchName.Length -gt 80) { $branchName = $branchName.Substring(0, 80).TrimEnd('-') }
     Write-Info "Branch: $branchName"
     if (-not $AutoWorkItems) { $branchName = Read-UserInput "  Confirm or override branch name" $branchName }
@@ -657,7 +674,12 @@ foreach ($topic in $groupKeys) {
     }
 
     # Commit
-    $commitMsg = "$suggestedBranchType`: $wiTitle AB#$wiId"
+    # Ensure commit message type reflects the final branch name (in case the user overrode it)
+    $derivedBranchType = ($branchName -split '/')[0]
+    if (-not [string]::IsNullOrWhiteSpace($derivedBranchType)) {
+        $branchType = $derivedBranchType
+    }
+    $commitMsg = "$branchType`: $wiTitle AB#$wiId"
     if (-not $AutoWorkItems) { $commitMsg = Read-UserInput "  Commit message" $commitMsg }
 
     if ($WhatIfOnly) {

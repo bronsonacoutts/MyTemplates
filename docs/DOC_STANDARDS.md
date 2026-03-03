@@ -15,17 +15,17 @@
 
 ## Documentation Types
 
-| Type | Location | Audience |
-|---|---|---|
-| API Reference | `docs/api/` | Developers integrating with the API |
-| Architecture Decisions | `docs/architecture/` | All contributors |
-| Developer Guides | `docs/developer/` | Contributors and maintainers |
-| User Guides | `docs/user/` | End users |
-| Troubleshooting | `docs/troubleshooting/` | Users and operators |
-| Deployment | `docs/deployment/` | DevOps / operators |
-| Integration Guides | `docs/integration/` | Developers |
-| Migration Guides | `docs/migration/` | Upgrading users |
-| Reference | `docs/reference/` | All audiences |
+| Type                   | Location                | Audience                            |
+| ---------------------- | ----------------------- | ----------------------------------- |
+| API Reference          | `docs/api/`             | Developers integrating with the API |
+| Architecture Decisions | `docs/architecture/`    | All contributors                    |
+| Developer Guides       | `docs/developer/`       | Contributors and maintainers        |
+| User Guides            | `docs/user/`            | End users                           |
+| Troubleshooting        | `docs/troubleshooting/` | Users and operators                 |
+| Deployment             | `docs/deployment/`      | DevOps / operators                  |
+| Integration Guides     | `docs/integration/`     | Developers                          |
+| Migration Guides       | `docs/migration/`       | Upgrading users                     |
+| Reference              | `docs/reference/`       | All audiences                       |
 
 ---
 
@@ -62,6 +62,7 @@
 All exported symbols **must** have JSDoc comments. See [agent-instructions.md](../agent-instructions.md) for detailed JSDoc requirements.
 
 Minimum required JSDoc:
+
 - `@param` — for each parameter
 - `@returns` — for non-void return values
 - `@throws` — for documented error conditions

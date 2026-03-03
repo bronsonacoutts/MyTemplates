@@ -28,6 +28,7 @@ Before diving into specific issues, check these common causes:
 ### Issue: `npm install` fails with permission errors
 
 **Symptom:**
+
 ```
 EACCES: permission denied, mkdir '/usr/local/lib/node_modules/...'
 ```
@@ -35,6 +36,7 @@ EACCES: permission denied, mkdir '/usr/local/lib/node_modules/...'
 **Cause:** npm is trying to write to a directory owned by root.
 
 **Solution:**
+
 1. Do NOT use `sudo npm install`. Instead, fix npm permissions:
    ```bash
    mkdir ~/.npm-global
@@ -49,6 +51,7 @@ EACCES: permission denied, mkdir '/usr/local/lib/node_modules/...'
 ### Issue: TypeScript errors after pulling latest changes
 
 **Symptom:**
+
 ```
 error TS2307: Cannot find module '...' or its corresponding type declarations.
 ```
@@ -56,6 +59,7 @@ error TS2307: Cannot find module '...' or its corresponding type declarations.
 **Cause:** Dependencies or type definitions may have changed.
 
 **Solution:**
+
 ```bash
 npm install
 rm -rf dist/ *.tsbuildinfo
@@ -71,6 +75,7 @@ npm run type-check
 **Cause:** Husky hooks were not installed, or hooks lack execute permission.
 
 **Solution:**
+
 ```bash
 # Re-install hooks
 npm run prepare
@@ -88,6 +93,7 @@ chmod +x .husky/pre-commit .husky/commit-msg .husky/pre-push
 ### Issue: Tests fail with "Cannot find module"
 
 **Symptom:**
+
 ```
 Error: Cannot find module '../../src/utils/myModule.js'
 ```
@@ -95,6 +101,7 @@ Error: Cannot find module '../../src/utils/myModule.js'
 **Cause:** The module path in the import is incorrect, or the file doesn't exist.
 
 **Solution:**
+
 1. Verify the file path is correct (TypeScript uses `.js` extensions in ESM imports even for `.ts` source files).
 2. Ensure `src/` is built if importing from `dist/`.
 3. Check that `tsconfig.json` paths are configured correctly.
@@ -104,6 +111,7 @@ Error: Cannot find module '../../src/utils/myModule.js'
 ### Issue: Coverage below threshold — CI failing
 
 **Symptom:**
+
 ```
 ERROR: Coverage for lines (78.5%) does not meet global threshold (80%)
 ```
@@ -111,6 +119,7 @@ ERROR: Coverage for lines (78.5%) does not meet global threshold (80%)
 **Cause:** New code was added without corresponding tests.
 
 **Solution:**
+
 1. Run `npm run test:unit` locally to see the coverage report.
 2. Open `coverage/index.html` in your browser for a visual breakdown.
 3. Identify uncovered lines and add tests for them.
@@ -125,6 +134,7 @@ ERROR: Coverage for lines (78.5%) does not meet global threshold (80%)
 **Cause:** Different ESLint versions or different Node.js versions between local and CI.
 
 **Solution:**
+
 ```bash
 # Ensure local dependencies match CI
 rm -rf node_modules package-lock.json
@@ -139,6 +149,7 @@ node --version
 ### Issue: `pre-push` hook fails with branch name validation error
 
 **Symptom:**
+
 ```
 ❌ Branch name 'my-feature' does not match the required pattern.
 ```
@@ -146,6 +157,7 @@ node --version
 **Cause:** The branch name doesn't include the required prefix.
 
 **Solution:**
+
 ```bash
 # Rename your branch with the correct prefix
 git branch -m my-feature feature/my-feature

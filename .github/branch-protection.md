@@ -21,20 +21,20 @@ Navigate to **Settings → Branches → Add branch protection rule** and enter `
 
 ### Protect matching branches
 
-| Setting | Value | Reason |
-|---|---|---|
-| Require a pull request before merging | ✅ Enabled | No direct pushes to main |
-| Required number of approvals before merging | **1** | At least one human review |
-| Dismiss stale pull request approvals when new commits are pushed | ✅ Enabled | Re-review after new changes |
-| Require review from Code Owners | ✅ Enabled | Enforces CODEOWNERS |
-| Require status checks to pass before merging | ✅ Enabled | CI must pass |
-| Required status checks | `lint`, `test`, `build` | The CI jobs from ci.yml |
-| Require branches to be up to date before merging | ✅ Enabled | Prevents stale merges |
-| Require conversation resolution before merging | ✅ Enabled | All review comments resolved |
-| Require linear history | ✅ Enabled (recommended) | Keeps git history clean |
-| Include administrators | ✅ Enabled | Rules apply to admins too |
-| Allow force pushes | ❌ Disabled | Preserve history |
-| Allow deletions | ❌ Disabled | Prevent accidental deletion |
+| Setting                                                          | Value                    | Reason                       |
+| ---------------------------------------------------------------- | ------------------------ | ---------------------------- |
+| Require a pull request before merging                            | ✅ Enabled               | No direct pushes to main     |
+| Required number of approvals before merging                      | **1**                    | At least one human review    |
+| Dismiss stale pull request approvals when new commits are pushed | ✅ Enabled               | Re-review after new changes  |
+| Require review from Code Owners                                  | ✅ Enabled               | Enforces CODEOWNERS          |
+| Require status checks to pass before merging                     | ✅ Enabled               | CI must pass                 |
+| Required status checks                                           | `validate`               | The CI job from ci.yml       |
+| Require branches to be up to date before merging                 | ✅ Enabled               | Prevents stale merges        |
+| Require conversation resolution before merging                   | ✅ Enabled               | All review comments resolved |
+| Require linear history                                           | ✅ Enabled (recommended) | Keeps git history clean      |
+| Include administrators                                           | ✅ Enabled               | Rules apply to admins too    |
+| Allow force pushes                                               | ❌ Disabled              | Preserve history             |
+| Allow deletions                                                  | ❌ Disabled              | Prevent accidental deletion  |
 
 ---
 
@@ -42,25 +42,25 @@ Navigate to **Settings → Branches → Add branch protection rule** and enter `
 
 Same as `main`, but with slightly relaxed settings:
 
-| Setting | Value |
-|---|---|
-| Require a pull request before merging | ✅ Enabled |
-| Required approvals | **1** |
-| Require status checks | `lint`, `test` |
-| Require branches to be up to date | ✅ Enabled |
-| Allow force pushes | ❌ Disabled |
-| Allow deletions | ❌ Disabled |
+| Setting                               | Value       |
+| ------------------------------------- | ----------- |
+| Require a pull request before merging | ✅ Enabled  |
+| Required approvals                    | **1**       |
+| Require status checks                 | `validate`  |
+| Require branches to be up to date     | ✅ Enabled  |
+| Allow force pushes                    | ❌ Disabled |
+| Allow deletions                       | ❌ Disabled |
 
 ---
 
 ## Recommended Settings for `staging`
 
-| Setting | Value |
-|---|---|
-| Require a pull request before merging | ✅ Enabled |
-| Required approvals | **1** |
-| Require status checks | `lint`, `test` |
-| Allow force pushes | ❌ Disabled |
+| Setting                               | Value       |
+| ------------------------------------- | ----------- |
+| Require a pull request before merging | ✅ Enabled  |
+| Required approvals                    | **1**       |
+| Require status checks                 | `validate`  |
+| Allow force pushes                    | ❌ Disabled |
 
 ---
 
@@ -80,11 +80,9 @@ GitHub now supports **Repository Rulesets** which provide more flexible protecti
 
 These are the job names from `.github/workflows/ci.yml` that should be added as required status checks:
 
-| Job ID | Display Name |
-|---|---|
-| `lint` | `Lint & Format` |
-| `test` | `Unit Tests & Coverage` |
-| `build` | `Build` |
+| Job ID     | Display Name           |
+| ---------- | ---------------------- |
+| `validate` | `Lint, Format & Tests` |
 
 To add them: **Settings → Branches → [branch rule] → Require status checks → Search** for each job name (they must have run at least once to appear).
 

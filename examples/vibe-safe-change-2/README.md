@@ -116,7 +116,7 @@ describe('fetchUser', () => {
 
     expect(user).toEqual(mockUser);
     expect(mockFetch).toHaveBeenCalledWith(
-      'https://api.example.com/users/550e8400-e29b-41d4-a716-446655440000',
+      'https://api.example.com/users/550e8400-e29b-41d4-a716-446655440000'
     );
   });
 
@@ -126,9 +126,7 @@ describe('fetchUser', () => {
       status: 404,
     });
 
-    await expect(
-      fetchUser('nonexistent-id'),
-    ).rejects.toThrow('Failed to fetch user: 404');
+    await expect(fetchUser('nonexistent-id')).rejects.toThrow('Failed to fetch user: 404');
   });
 });
 ```
@@ -139,12 +137,12 @@ describe('fetchUser', () => {
 npm run validate
 ```
 
-| Guardrail | Result | Why |
-|---|---|---|
+| Guardrail          | Result   | Why                                                  |
+| ------------------ | -------- | ---------------------------------------------------- |
 | No-network harness | **Pass** | `fetch` is mocked via `vi.stubGlobal`, no real calls |
-| ESLint | **Pass** | Proper imports, no `any`, no console |
-| TypeScript strict | **Pass** | All types inferred correctly |
-| Coverage | **Pass** | Both happy path and error path covered |
+| ESLint             | **Pass** | Proper imports, no `any`, no console                 |
+| TypeScript strict  | **Pass** | All types inferred correctly                         |
+| Coverage           | **Pass** | Both happy path and error path covered               |
 
 ## Step 6 — Walk the checklist and commit
 

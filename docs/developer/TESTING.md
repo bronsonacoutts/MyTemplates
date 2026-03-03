@@ -8,10 +8,10 @@
 
 This project uses a two-tier testing strategy:
 
-| Tier | Tool | Purpose |
-|---|---|---|
-| Unit / Integration | [Vitest](https://vitest.dev/) | Fast, isolated tests of individual modules |
-| End-to-End (E2E) | [Playwright](https://playwright.dev/) | Browser-level tests of complete user flows |
+| Tier               | Tool                                  | Purpose                                    |
+| ------------------ | ------------------------------------- | ------------------------------------------ |
+| Unit / Integration | [Vitest](https://vitest.dev/)         | Fast, isolated tests of individual modules |
+| End-to-End (E2E)   | [Playwright](https://playwright.dev/) | Browser-level tests of complete user flows |
 
 ---
 
@@ -19,12 +19,12 @@ This project uses a two-tier testing strategy:
 
 Coverage is enforced in CI using `@vitest/coverage-v8`. The build **fails** if any threshold is not met.
 
-| Metric | Threshold |
-|---|---|
-| Lines | **80%** |
-| Functions | **80%** |
-| Statements | **80%** |
-| Branches | **75%** |
+| Metric     | Threshold |
+| ---------- | --------- |
+| Lines      | **80%**   |
+| Functions  | **80%**   |
+| Statements | **80%**   |
+| Branches   | **75%**   |
 
 Thresholds are configured in `vitest.config.ts`.
 
@@ -141,6 +141,7 @@ test.describe('User Authentication', () => {
 ### Configuration
 
 Playwright config lives in `playwright.config.ts`. Key settings:
+
 - Base URL is configured via environment variables.
 - Multiple browser contexts can be configured for cross-browser testing.
 
@@ -149,6 +150,7 @@ Playwright config lives in `playwright.config.ts`. Key settings:
 ## Test Setup & Global Utilities
 
 The file `test/setup.ts` is run before each test suite. Use it for:
+
 - Global mocks that apply to all tests.
 - Custom matchers.
 - Environment variable setup.

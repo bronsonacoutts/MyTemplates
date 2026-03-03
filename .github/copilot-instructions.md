@@ -11,6 +11,7 @@
 This repository is a **TypeScript/Node.js project template** providing comprehensive scaffolding with built-in quality guardrails. It is designed to be cloned as a starting point for production-grade applications, enforcing consistent standards across linting, testing, CI/CD, security, and documentation from day one.
 
 **Goals:**
+
 - Provide a battle-tested project structure with zero configuration drift.
 - Enforce code quality automatically via pre-commit hooks, CI, and code review.
 - Make doing the right thing the easy thing for every contributor.
@@ -19,18 +20,18 @@ This repository is a **TypeScript/Node.js project template** providing comprehen
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Language | TypeScript 5.x (strict mode) |
-| Runtime | Node.js ≥ 18 (LTS) |
-| Unit Testing | Vitest 1.x |
-| E2E Testing | Playwright 1.x |
-| Linting | ESLint 8.x with `@typescript-eslint` |
-| Formatting | Prettier 3.x |
-| Git Hooks | Husky 8.x + lint-staged |
-| Commit Linting | Commitlint + Conventional Commits |
-| Build | TypeScript compiler (`tsc`) + Vite |
-| CI/CD | GitHub Actions |
+| Layer          | Technology                           |
+| -------------- | ------------------------------------ |
+| Language       | TypeScript 5.x (strict mode)         |
+| Runtime        | Node.js ≥ 18 (LTS)                   |
+| Unit Testing   | Vitest 1.x                           |
+| E2E Testing    | Playwright 1.x                       |
+| Linting        | ESLint 8.x with `@typescript-eslint` |
+| Formatting     | Prettier 3.x                         |
+| Git Hooks      | Husky 8.x + lint-staged              |
+| Commit Linting | Commitlint + Conventional Commits    |
+| Build          | TypeScript compiler (`tsc`) + Vite   |
+| CI/CD          | GitHub Actions                       |
 
 ---
 
@@ -38,29 +39,30 @@ This repository is a **TypeScript/Node.js project template** providing comprehen
 
 ### Long-lived branches
 
-| Branch | Purpose |
-|---|---|
-| `main` | Production-ready code. Protected. Requires PR + 1 approval + all checks. |
-| `develop` | Integration branch. All feature work merges here first. |
-| `staging` | Pre-production validation. Mirrors production environment. |
+| Branch    | Purpose                                                                  |
+| --------- | ------------------------------------------------------------------------ |
+| `main`    | Production-ready code. Protected. Requires PR + 1 approval + all checks. |
+| `develop` | Integration branch. All feature work merges here first.                  |
+| `staging` | Pre-production validation. Mirrors production environment.               |
 
 ### Short-lived branch prefixes
 
 All short-lived branches **must** follow the pattern `<prefix>/<short-description>` using lowercase kebab-case.
 
-| Prefix | Use case | Example |
-|---|---|---|
-| `feature/` | New functionality | `feature/add-user-auth` |
-| `fix/` | Bug fixes | `fix/login-redirect-loop` |
-| `hotfix/` | Urgent production fixes | `hotfix/critical-null-deref` |
-| `release/` | Release preparation | `release/v2.1.0` |
-| `docs/` | Documentation only | `docs/update-api-reference` |
+| Prefix      | Use case                               | Example                         |
+| ----------- | -------------------------------------- | ------------------------------- |
+| `feature/`  | New functionality                      | `feature/add-user-auth`         |
+| `fix/`      | Bug fixes                              | `fix/login-redirect-loop`       |
+| `hotfix/`   | Urgent production fixes                | `hotfix/critical-null-deref`    |
+| `release/`  | Release preparation                    | `release/v2.1.0`                |
+| `docs/`     | Documentation only                     | `docs/update-api-reference`     |
 | `refactor/` | Code restructuring, no behavior change | `refactor/extract-auth-service` |
-| `test/` | Test additions/fixes only | `test/add-payment-coverage` |
-| `chore/` | Tooling, deps, config | `chore/bump-eslint` |
-| `copilot/` | AI-generated branches (auto or manual) | `copilot/fix-typo-in-readme` |
+| `test/`     | Test additions/fixes only              | `test/add-payment-coverage`     |
+| `chore/`    | Tooling, deps, config                  | `chore/bump-eslint`             |
+| `copilot/`  | AI-generated branches (auto or manual) | `copilot/fix-typo-in-readme`    |
 
 **Rules:**
+
 - Branch names are validated by `scripts/validate-branch.js` in the `pre-push` hook.
 - Never commit directly to `main`, `develop`, or `staging`.
 - Delete branches after merging.
@@ -83,21 +85,22 @@ All commits **must** follow the [Conventional Commits](https://www.conventionalc
 
 ### Allowed types
 
-| Type | When to use |
-|---|---|
-| `feat` | A new feature |
-| `fix` | A bug fix |
-| `docs` | Documentation changes only |
-| `style` | Formatting, whitespace (no logic change) |
-| `refactor` | Code restructuring without behavior change |
-| `perf` | Performance improvement |
-| `test` | Adding or updating tests |
-| `build` | Build system or external dependency changes |
-| `ci` | CI/CD configuration changes |
-| `chore` | Miscellaneous tasks, tooling |
-| `revert` | Reverts a previous commit |
+| Type       | When to use                                 |
+| ---------- | ------------------------------------------- |
+| `feat`     | A new feature                               |
+| `fix`      | A bug fix                                   |
+| `docs`     | Documentation changes only                  |
+| `style`    | Formatting, whitespace (no logic change)    |
+| `refactor` | Code restructuring without behavior change  |
+| `perf`     | Performance improvement                     |
+| `test`     | Adding or updating tests                    |
+| `build`    | Build system or external dependency changes |
+| `ci`       | CI/CD configuration changes                 |
+| `chore`    | Miscellaneous tasks, tooling                |
+| `revert`   | Reverts a previous commit                   |
 
 ### Rules
+
 - Summary line ≤ 72 characters, imperative mood ("add" not "adds" / "added").
 - Scope is lowercase, single word or hyphenated (e.g., `auth`, `user-profile`).
 - Breaking changes: add `!` after type/scope **and** include `BREAKING CHANGE:` footer.
@@ -125,6 +128,7 @@ Migrate to /api/v2/* endpoints documented in docs/api/.
 ## Code Quality Standards
 
 ### ESLint
+
 - **Zero warnings policy.** The `--max-warnings 0` flag is set in all lint scripts.
 - All `.ts`, `.tsx`, `.js`, `.jsx` files are linted.
 - The ESLint config extends `@typescript-eslint/recommended` and `prettier` (no conflicts).
@@ -132,12 +136,14 @@ Migrate to /api/v2/* endpoints documented in docs/api/.
 - Never use `// eslint-disable` without a documented justification comment immediately above it.
 
 ### Prettier
+
 - Prettier is the single source of truth for formatting. ESLint defers to Prettier for style rules.
 - Run `npm run format` to auto-format all files.
 - Run `npm run format:check` in CI to fail on unformatted files.
 - Prettier config lives in `.prettierrc.json`. Do not override per-file.
 
 ### TypeScript
+
 - **Strict mode is enabled** (`"strict": true` in `tsconfig.json`). This includes:
   - `strictNullChecks`
   - `noImplicitAny`
@@ -149,6 +155,7 @@ Migrate to /api/v2/* endpoints documented in docs/api/.
 - Use `interface` for object shapes, `type` for unions/intersections/utilities.
 
 ### General
+
 - Functions should be small and do one thing.
 - Prefer `const` over `let`; never use `var`.
 - No unused variables or imports (enforced by ESLint).
@@ -161,12 +168,12 @@ Migrate to /api/v2/* endpoints documented in docs/api/.
 
 ### Coverage Thresholds (enforced in CI)
 
-| Metric | Threshold |
-|---|---|
-| Lines | 80% |
-| Functions | 80% |
-| Statements | 80% |
-| Branches | 75% |
+| Metric     | Threshold |
+| ---------- | --------- |
+| Lines      | 80%       |
+| Functions  | 80%       |
+| Statements | 80%       |
+| Branches   | 75%       |
 
 Coverage is measured by `@vitest/coverage-v8`. CI fails if any threshold is not met.
 
@@ -204,6 +211,7 @@ npm run test:e2e:smoke    # Smoke tests only
 ## Documentation Standards
 
 ### JSDoc
+
 - All exported functions, classes, interfaces, and types **must** have JSDoc comments.
 - Include `@param`, `@returns`, and `@throws` tags where applicable.
 - Include `@example` for non-obvious APIs.
@@ -222,10 +230,12 @@ export async function getUserById(id: string): Promise<User> { ... }
 ```
 
 ### README Updates
+
 - When adding a feature, update `README.md` if it affects setup, usage, or configuration.
 - Keep the "Getting Started" section accurate and tested.
 
 ### Architecture Decision Records (ADRs)
+
 - Use `docs/architecture/ADR_TEMPLATE.md` for any significant architectural decision.
 - ADR files are named `ADR-NNNN-short-title.md` (e.g., `ADR-0001-use-vitest.md`).
 - Once accepted, ADRs are immutable — supersede them with a new ADR instead of editing.
@@ -265,11 +275,13 @@ docs/
 ## AI Code Generation Guidelines
 
 ### General Principles
+
 - **Copilot is a first-class contributor.** Use GitHub Copilot for code generation, but treat all generated code as code you own and are responsible for.
 - Review all AI-generated code before committing. Understand what the code does — don't commit code you can't explain.
 - AI-generated branches should use the `copilot/` prefix.
 
 ### When generating code with AI assistance:
+
 1. **Generate tests alongside code.** Never accept a code suggestion without also generating the corresponding unit tests.
 2. **Validate types.** Ensure generated code uses proper TypeScript types — no `any`, no implicit types.
 3. **Check for security issues.** Prompt the AI to review for common vulnerabilities (injection, XSS, insecure defaults).
@@ -278,6 +290,7 @@ docs/
 6. **Prefer explicit over clever.** AI-generated code can be overly clever. Prefer readable, explicit code.
 
 ### Copilot Instructions
+
 - The `.github/copilot-instructions.md` file (this file's mirror) is read by GitHub Copilot to understand project conventions.
 - Keep it updated whenever project conventions change.
 - Run `npm run sync-instructions` after editing `agent-instructions.md` to sync both files.
@@ -287,13 +300,15 @@ docs/
 ## PR Process
 
 ### Opening a PR
+
 - PR title **must** follow Conventional Commits format (validated by `pr-validation` workflow).
 - Fill out the PR template completely. Empty sections signal an incomplete PR.
 - Link to the issue being addressed in the PR description.
 - Keep PRs focused — one logical change per PR. Large PRs will be requested to split.
 
 ### Requirements before merge
-- [ ] All CI checks pass (lint, type-check, test with coverage, build).
+
+- [ ] All CI checks pass (lint, format, unit tests).
 - [ ] At least **1 approving review** from a codeowner.
 - [ ] No unresolved review comments.
 - [ ] Branch is up to date with the target branch.
@@ -302,6 +317,7 @@ docs/
 - [ ] `CHANGELOG.md` updated for user-facing changes.
 
 ### Review Guidelines (for reviewers)
+
 - Focus on correctness, security, and maintainability — not personal style preferences.
 - Use "Request changes" only for blocking issues; use comments for suggestions.
 - Approve when you would be comfortable shipping this code.
@@ -311,19 +327,19 @@ docs/
 
 ## Scripts Reference
 
-| Script | Description |
-|---|---|
-| `npm run lint` | Run ESLint (zero warnings) |
-| `npm run lint:fix` | Auto-fix ESLint issues |
-| `npm run format` | Format all files with Prettier |
-| `npm run format:check` | Check formatting without writing |
-| `npm test` | Run unit tests |
-| `npm run test:unit` | Unit tests with coverage |
-| `npm run test:e2e` | Run E2E tests |
-| `npm run type-check` | TypeScript type check |
-| `npm run build` | Compile and build |
-| `npm run validate` | lint + type-check + test |
-| `npm run validate:branch` | Validate current branch name |
-| `npm run validate:release-notes` | Validate RELEASE_NOTES.md |
-| `npm run sync-instructions` | Sync agent-instructions.md ↔ copilot-instructions.md |
-| `npm run sendit` | Interactive commit + push helper |
+| Script                           | Description                                          |
+| -------------------------------- | ---------------------------------------------------- |
+| `npm run lint`                   | Run ESLint (zero warnings)                           |
+| `npm run lint:fix`               | Auto-fix ESLint issues                               |
+| `npm run format`                 | Format all files with Prettier                       |
+| `npm run format:check`           | Check formatting without writing                     |
+| `npm test`                       | Run unit tests                                       |
+| `npm run test:unit`              | Unit tests with coverage                             |
+| `npm run test:e2e`               | Run E2E tests                                        |
+| `npm run type-check`             | TypeScript type check                                |
+| `npm run build`                  | Compile and build                                    |
+| `npm run validate`               | lint + type-check + test                             |
+| `npm run validate:branch`        | Validate current branch name                         |
+| `npm run validate:release-notes` | Validate RELEASE_NOTES.md                            |
+| `npm run sync-instructions`      | Sync agent-instructions.md ↔ copilot-instructions.md |
+| `npm run sendit`                 | Interactive commit + push helper                     |

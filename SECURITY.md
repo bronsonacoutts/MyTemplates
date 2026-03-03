@@ -4,10 +4,10 @@
 
 The following versions of this project are currently supported with security updates:
 
-| Version | Supported |
-|---|---|
-| 1.x (latest) | ✅ Active support |
-| < 1.0 | ❌ No longer supported |
+| Version      | Supported              |
+| ------------ | ---------------------- |
+| 1.x (latest) | ✅ Active support      |
+| < 1.0        | ❌ No longer supported |
 
 ## Reporting a Vulnerability
 
@@ -43,11 +43,11 @@ Email the maintainer directly at the contact address listed in the repository. I
 We use the [CVSS v3.1](https://www.first.org/cvss/calculator/3.1) scale:
 
 | Severity | CVSS Score | Response SLA |
-|---|---|---|
-| Critical | 9.0 – 10.0 | 7 days |
-| High | 7.0 – 8.9 | 30 days |
-| Medium | 4.0 – 6.9 | 90 days |
-| Low | 0.1 – 3.9 | Next release |
+| -------- | ---------- | ------------ |
+| Critical | 9.0 – 10.0 | 7 days       |
+| High     | 7.0 – 8.9  | 30 days      |
+| Medium   | 4.0 – 6.9  | 90 days      |
+| Low      | 0.1 – 3.9  | Next release |
 
 ## Security Best Practices for Contributors
 

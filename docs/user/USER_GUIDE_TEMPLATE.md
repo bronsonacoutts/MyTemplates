@@ -52,6 +52,7 @@ Before you begin, ensure you have:
 2. Step two
 
 **Tips:**
+
 - [Helpful tip]
 - [Another tip]
 
@@ -65,8 +66,8 @@ Before you begin, ensure you have:
 
 <!-- Document any user-configurable options. -->
 
-| Option | Description | Default | Example |
-|---|---|---|---|
+| Option   | Description      | Default   | Example   |
+| -------- | ---------------- | --------- | --------- |
 | Option 1 | What it controls | `default` | `example` |
 | Option 2 | What it controls | `default` | `example` |
 
@@ -96,10 +97,10 @@ A: [Answer]
 
 ## Keyboard Shortcuts
 
-| Action | Windows/Linux | macOS |
-|---|---|---|
-| [Action 1] | `Ctrl + X` | `Cmd + X` |
-| [Action 2] | `Ctrl + Y` | `Cmd + Y` |
+| Action     | Windows/Linux | macOS     |
+| ---------- | ------------- | --------- |
+| [Action 1] | `Ctrl + X`    | `Cmd + X` |
+| [Action 2] | `Ctrl + Y`    | `Cmd + Y` |
 
 ---
 

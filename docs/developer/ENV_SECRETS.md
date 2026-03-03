@@ -31,35 +31,35 @@
 
 ### Application Variables
 
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `NODE_ENV` | Yes | `development` | Runtime environment (`development`, `test`, `production`) |
-| `PORT` | No | `3000` | HTTP server port |
-| `LOG_LEVEL` | No | `info` | Logging verbosity (`error`, `warn`, `info`, `debug`) |
+| Variable    | Required | Default       | Description                                               |
+| ----------- | -------- | ------------- | --------------------------------------------------------- |
+| `NODE_ENV`  | Yes      | `development` | Runtime environment (`development`, `test`, `production`) |
+| `PORT`      | No       | `3000`        | HTTP server port                                          |
+| `LOG_LEVEL` | No       | `info`        | Logging verbosity (`error`, `warn`, `info`, `debug`)      |
 
 ### Database Variables
 
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `DATABASE_URL` | Yes (prod) | — | Full database connection string |
-| `DATABASE_POOL_SIZE` | No | `10` | Connection pool size |
+| Variable             | Required   | Default | Description                     |
+| -------------------- | ---------- | ------- | ------------------------------- |
+| `DATABASE_URL`       | Yes (prod) | —       | Full database connection string |
+| `DATABASE_POOL_SIZE` | No         | `10`    | Connection pool size            |
 
 ### Authentication Variables
 
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `JWT_SECRET` | Yes | — | Secret key for JWT signing (min 32 chars) |
-| `JWT_EXPIRES_IN` | No | `1h` | JWT expiry duration |
-| `OAUTH_CLIENT_ID` | Conditional | — | OAuth2 client ID (required if OAuth enabled) |
-| `OAUTH_CLIENT_SECRET` | Conditional | — | OAuth2 client secret (required if OAuth enabled) |
+| Variable              | Required    | Default | Description                                      |
+| --------------------- | ----------- | ------- | ------------------------------------------------ |
+| `JWT_SECRET`          | Yes         | —       | Secret key for JWT signing (min 32 chars)        |
+| `JWT_EXPIRES_IN`      | No          | `1h`    | JWT expiry duration                              |
+| `OAUTH_CLIENT_ID`     | Conditional | —       | OAuth2 client ID (required if OAuth enabled)     |
+| `OAUTH_CLIENT_SECRET` | Conditional | —       | OAuth2 client secret (required if OAuth enabled) |
 
 ### External Services
 
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `API_BASE_URL` | Yes | — | Base URL for downstream API |
-| `API_KEY` | Yes | — | API authentication key |
-| `WEBHOOK_SECRET` | Conditional | — | Shared secret for webhook signature verification |
+| Variable         | Required    | Default | Description                                      |
+| ---------------- | ----------- | ------- | ------------------------------------------------ |
+| `API_BASE_URL`   | Yes         | —       | Base URL for downstream API                      |
+| `API_KEY`        | Yes         | —       | API authentication key                           |
+| `WEBHOOK_SECRET` | Conditional | —       | Shared secret for webhook signature verification |
 
 ---
 
@@ -67,12 +67,13 @@
 
 The following secrets must be configured in the repository settings under **Settings → Secrets and variables → Actions**:
 
-| Secret Name | Description |
-|---|---|
-| `GITHUB_TOKEN` | Automatically provided by GitHub Actions. No configuration needed. |
-| `NPM_TOKEN` | npm publish token (required for release workflow if publishing to npm). |
+| Secret Name    | Description                                                             |
+| -------------- | ----------------------------------------------------------------------- |
+| `GITHUB_TOKEN` | Automatically provided by GitHub Actions. No configuration needed.      |
+| `NPM_TOKEN`    | npm publish token (required for release workflow if publishing to npm). |
 
 To add a secret:
+
 1. Go to your repository on GitHub.
 2. Navigate to **Settings → Secrets and variables → Actions**.
 3. Click **New repository secret**.

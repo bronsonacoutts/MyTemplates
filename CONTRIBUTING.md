@@ -204,6 +204,7 @@ Look for issues labeled `good first issue` - these are great for newcomers!
 ### Before Starting Large Changes
 
 For significant changes:
+
 1. Open an issue to discuss your idea
 2. Wait for feedback from maintainers
 3. Get approval before investing significant time

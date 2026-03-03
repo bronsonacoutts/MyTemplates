@@ -8,11 +8,11 @@
 
 Ensure you have the following installed before proceeding:
 
-| Tool | Minimum Version | Install |
-|---|---|---|
+| Tool                           | Minimum Version             | Install                                                                   |
+| ------------------------------ | --------------------------- | ------------------------------------------------------------------------- |
 | [Node.js](https://nodejs.org/) | 18.x LTS (20.x recommended) | [nodejs.org](https://nodejs.org/) or [nvm](https://github.com/nvm-sh/nvm) |
-| [npm](https://www.npmjs.com/) | 9.x | Comes with Node.js |
-| [Git](https://git-scm.com/) | 2.x | [git-scm.com](https://git-scm.com/) |
+| [npm](https://www.npmjs.com/)  | 9.x                         | Comes with Node.js                                                        |
+| [Git](https://git-scm.com/)    | 2.x                         | [git-scm.com](https://git-scm.com/)                                       |
 
 Check your versions:
 
@@ -62,6 +62,7 @@ npm install
 ```
 
 This will also run `npm run prepare`, which:
+
 - Installs Husky git hooks (pre-commit, commit-msg, pre-push).
 - Syncs `agent-instructions.md` to `.github/copilot-instructions.md`.
 
@@ -95,15 +96,16 @@ npm run validate
 
 Husky installs three git hooks automatically:
 
-| Hook | Trigger | Action |
-|---|---|---|
-| `pre-commit` | Before each commit | Runs lint-staged (lint + format staged files) |
+| Hook         | Trigger                      | Action                                                |
+| ------------ | ---------------------------- | ----------------------------------------------------- |
+| `pre-commit` | Before each commit           | Runs lint-staged (lint + format staged files)         |
 | `commit-msg` | After writing commit message | Validates commit message against Conventional Commits |
-| `pre-push` | Before pushing | Validates branch name, type-checks, runs tests |
+| `pre-push`   | Before pushing               | Validates branch name, type-checks, runs tests        |
 
 If a hook fails, the commit or push is blocked. Fix the reported issues and try again.
 
 To **bypass hooks** in exceptional circumstances (not recommended):
+
 ```bash
 git commit --no-verify -m "..."   # Skip pre-commit and commit-msg
 git push --no-verify              # Skip pre-push

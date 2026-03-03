@@ -14,8 +14,8 @@ assignees: ''
 
 <!-- Where is the documentation issue? Provide a file path, URL, or section name. -->
 
-- File/Page: 
-- Section: 
+- File/Page:
+- Section:
 
 ## Current Content
 

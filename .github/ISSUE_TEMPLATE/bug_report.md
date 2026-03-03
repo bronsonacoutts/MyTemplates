@@ -35,13 +35,13 @@ paste logs here
 
 ## Environment
 
-| Field | Value |
-|---|---|
-| OS | e.g., macOS 14, Ubuntu 22.04, Windows 11 |
-| Node.js version | e.g., 20.11.0 |
-| npm version | e.g., 10.2.4 |
-| Package version | e.g., 1.0.0 |
-| Browser (if applicable) | e.g., Chrome 121 |
+| Field                   | Value                                    |
+| ----------------------- | ---------------------------------------- |
+| OS                      | e.g., macOS 14, Ubuntu 22.04, Windows 11 |
+| Node.js version         | e.g., 20.11.0                            |
+| npm version             | e.g., 10.2.4                             |
+| Package version         | e.g., 1.0.0                              |
+| Browser (if applicable) | e.g., Chrome 121                         |
 
 ## Additional Context
 

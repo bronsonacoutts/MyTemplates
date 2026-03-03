@@ -20,12 +20,12 @@ This repo's templates and automations exist to catch those problems early.
 
 Browse [vibe-coding/prompts/](../vibe-coding/prompts/) and pick the one that matches your task:
 
-| Task | Prompt |
-|---|---|
-| New module or feature | [add-feature.md](../vibe-coding/prompts/add-feature.md) |
-| Bug diagnosis and fix | [bugfix.md](../vibe-coding/prompts/bugfix.md) |
-| Safe restructuring | [repo-refactor.md](../vibe-coding/prompts/repo-refactor.md) |
-| Documentation | [documentation.md](../vibe-coding/prompts/documentation.md) |
+| Task                       | Prompt                                                                            |
+| -------------------------- | --------------------------------------------------------------------------------- |
+| New module or feature      | [add-feature.md](../vibe-coding/prompts/add-feature.md)                           |
+| Bug diagnosis and fix      | [bugfix.md](../vibe-coding/prompts/bugfix.md)                                     |
+| Safe restructuring         | [repo-refactor.md](../vibe-coding/prompts/repo-refactor.md)                       |
+| Documentation              | [documentation.md](../vibe-coding/prompts/documentation.md)                       |
 | PR description + changelog | [pr-description-changelog.md](../vibe-coding/prompts/pr-description-changelog.md) |
 
 Each prompt already embeds the repo's constraints (strict TypeScript,
@@ -146,12 +146,12 @@ warning  Unexpected console statement  no-console
 
 ## Tools that work well with this repo
 
-| Tool | How to use it |
-|---|---|
-| **GitHub Copilot** | Enable in VS Code. The repo's agent-instructions.md is loaded automatically. |
-| **Copilot Chat** | Paste prompt templates into the chat panel. Reference specific files with `@workspace`. |
-| **ChatGPT / Claude** | Copy the prompt, paste your task, include relevant file contents. |
-| **Copilot CLI** | Use `gh copilot suggest` for one-off commands that follow the repo's conventions. |
+| Tool                 | How to use it                                                                           |
+| -------------------- | --------------------------------------------------------------------------------------- |
+| **GitHub Copilot**   | Enable in VS Code. The repo's agent-instructions.md is loaded automatically.            |
+| **Copilot Chat**     | Paste prompt templates into the chat panel. Reference specific files with `@workspace`. |
+| **ChatGPT / Claude** | Copy the prompt, paste your task, include relevant file contents.                       |
+| **Copilot CLI**      | Use `gh copilot suggest` for one-off commands that follow the repo's conventions.       |
 
 ---
 
@@ -172,7 +172,7 @@ Consider writing manually when:
 - Performance-critical hot paths
 - Novel algorithms without established patterns
 
-Even in these cases, use the prompt templates to generate a *starting point*, then review and rewrite carefully.
+Even in these cases, use the prompt templates to generate a _starting point_, then review and rewrite carefully.
 
 ---
 

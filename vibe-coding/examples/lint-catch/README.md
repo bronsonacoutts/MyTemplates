@@ -13,9 +13,9 @@ that works but violates the repo's strict TypeScript and ESLint rules.
 // src/utils/format.ts — AI-generated (raw output)
 
 export default function formatName(first: any, last: any) {
-  console.log("formatting name")
-  let result = first + " " + last
-  return result
+  console.log('formatting name');
+  let result = first + ' ' + last;
+  return result;
 }
 ```
 
@@ -64,13 +64,13 @@ export function formatName(first: string, last: string): string {
 
 ## What changed and why
 
-| AI output | Issue | Fix |
-|---|---|---|
-| `export default function` | Named exports preferred for refactoring safety | `export function` |
-| `any` parameter types | Strict mode forbids `any` | `string` |
-| `console.log` | No console in production code | Removed |
-| `let result` | Never reassigned | Inlined with template literal |
-| No JSDoc | All exports require JSDoc | Added full JSDoc block |
+| AI output                 | Issue                                          | Fix                           |
+| ------------------------- | ---------------------------------------------- | ----------------------------- |
+| `export default function` | Named exports preferred for refactoring safety | `export function`             |
+| `any` parameter types     | Strict mode forbids `any`                      | `string`                      |
+| `console.log`             | No console in production code                  | Removed                       |
+| `let result`              | Never reassigned                               | Inlined with template literal |
+| No JSDoc                  | All exports require JSDoc                      | Added full JSDoc block        |
 
 ## Takeaway
 

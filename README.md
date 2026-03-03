@@ -11,7 +11,7 @@ fast feedback, consistent structure, safe merges, fewer regressions.
 ## What this repo is
 
 This is a **portfolio-grade project template** built around
-*vibe coding* — AI-assisted rapid development where templates,
+_vibe coding_ — AI-assisted rapid development where templates,
 guardrails, and automations reduce errors, enforce standards,
 and speed up shipping.
 
@@ -39,9 +39,9 @@ What you get:
    and copy the one that matches your task.
 2. **Paste into your AI tool.** Replace the placeholders with your
    specific task. The prompt already includes the repo's constraints
-   (strict TS, no ``any``, mock network calls, JSDoc required).
+   (strict TS, no `any`, mock network calls, JSDoc required).
 3. **Apply the output.** Copy the AI's response into your editor.
-4. **Run ``npm run validate``.** This single command runs lint +
+4. **Run `npm run validate`.** This single command runs lint +
    type-check + tests. If it passes, you're 90% safe.
 5. **Walk the checklist.** Use the
    [AI change checklist](vibe-coding/guardrails/ai-change-checklist.md)
@@ -51,13 +51,13 @@ What you get:
 
 ### Example prompts to try
 
-| Task | Prompt file | What it does |
-|---|---|---|
-| Add a new module | [add-feature.md](vibe-coding/prompts/add-feature.md) | Source + tests + JSDoc following repo conventions |
-| Fix a bug | [bugfix.md](vibe-coding/prompts/bugfix.md) | Root-cause analysis + fix + regression test |
-| Refactor safely | [repo-refactor.md](vibe-coding/prompts/repo-refactor.md) | Restructure without changing behaviour; tests must pass |
-| Write docs | [documentation.md](vibe-coding/prompts/documentation.md) | JSDoc, guides, ADRs in the correct directory |
-| Draft a PR | [pr-description-changelog.md](vibe-coding/prompts/pr-description-changelog.md) | PR description + CHANGELOG entry from a diff |
+| Task             | Prompt file                                                                    | What it does                                            |
+| ---------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| Add a new module | [add-feature.md](vibe-coding/prompts/add-feature.md)                           | Source + tests + JSDoc following repo conventions       |
+| Fix a bug        | [bugfix.md](vibe-coding/prompts/bugfix.md)                                     | Root-cause analysis + fix + regression test             |
+| Refactor safely  | [repo-refactor.md](vibe-coding/prompts/repo-refactor.md)                       | Restructure without changing behaviour; tests must pass |
+| Write docs       | [documentation.md](vibe-coding/prompts/documentation.md)                       | JSDoc, guides, ADRs in the correct directory            |
+| Draft a PR       | [pr-description-changelog.md](vibe-coding/prompts/pr-description-changelog.md) | PR description + CHANGELOG entry from a diff            |
 
 ### How to keep changes safe
 
@@ -65,7 +65,7 @@ What you get:
   lint-staged; pre-push runs the full validation suite. CI re-checks
   everything.
 - **Tests block network calls by default.** test/setup.ts replaces
-  ``fetch`` and ``XMLHttpRequest`` with stubs that throw. AI-generated
+  `fetch` and `XMLHttpRequest` with stubs that throw. AI-generated
   tests that forget to mock will fail immediately.
 - **Secret scanning is automatic.** Gitleaks runs in CI on every push. No credentials slip through.
 - **Branch and PR naming is enforced.** [scripts/validate-branch.js](scripts/validate-branch.js) and the [PR validation workflow](.github/workflows/pr-validation.yml) block non-conforming names.
@@ -76,18 +76,18 @@ What you get:
 
 Automations that make vibe coding safe without slowing you down.
 
-| Guardrail | Where | What it prevents |
-|---|---|---|
-| ESLint zero-warnings | CI + pre-commit hook | ``any`` types, unused imports, console.log, formatting drift |
-| TypeScript strict mode | [tsconfig.json](tsconfig.json) | Implicit any, unchecked index access, missing returns |
-| No-network test harness | [test/setup.ts](test/setup.ts) | AI-generated tests calling real APIs |
-| Coverage gates (80/80/80/75) | [vitest.config.ts](vitest.config.ts) | Shipping untested code |
-| Gitleaks secret scan | [CI workflow](.github/workflows/ci.yml) | Committed credentials |
-| CodeQL analysis | [CodeQL workflow](.github/workflows/codeql.yml) | Security vulnerabilities in JS/TS |
-| Branch name validation | [validate-branch.js](scripts/validate-branch.js) + [PR validation](.github/workflows/pr-validation.yml) | Non-standard branch names |
-| PR title validation | [PR validation](.github/workflows/pr-validation.yml) | Non-conventional commit titles |
-| Markdown lint | [.markdownlint.json](.markdownlint.json) + CI | Documentation formatting drift |
-| Commitlint | [commitlint.config.js](commitlint.config.js) + commit-msg hook | Non-conventional commit messages |
+| Guardrail                    | Where                                                                                                   | What it prevents                                           |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| ESLint zero-warnings         | CI + pre-commit hook                                                                                    | `any` types, unused imports, console.log, formatting drift |
+| TypeScript strict mode       | [tsconfig.json](tsconfig.json)                                                                          | Implicit any, unchecked index access, missing returns      |
+| No-network test harness      | [test/setup.ts](test/setup.ts)                                                                          | AI-generated tests calling real APIs                       |
+| Coverage gates (80/80/80/75) | [vitest.config.ts](vitest.config.ts)                                                                    | Shipping untested code                                     |
+| Gitleaks secret scan         | [CI workflow](.github/workflows/ci.yml)                                                                 | Committed credentials                                      |
+| CodeQL analysis              | [CodeQL workflow](.github/workflows/codeql.yml)                                                         | Security vulnerabilities in JS/TS                          |
+| Branch name validation       | [validate-branch.js](scripts/validate-branch.js) + [PR validation](.github/workflows/pr-validation.yml) | Non-standard branch names                                  |
+| PR title validation          | [PR validation](.github/workflows/pr-validation.yml)                                                    | Non-conventional commit titles                             |
+| Markdown lint                | [.markdownlint.json](.markdownlint.json) + CI                                                           | Documentation formatting drift                             |
+| Commitlint                   | [commitlint.config.js](commitlint.config.js) + commit-msg hook                                          | Non-conventional commit messages                           |
 
 ---
 
@@ -97,51 +97,51 @@ Every template and automation in this repo, indexed by area.
 
 ### Templates and docs
 
-| Area | Name | Purpose for vibe coding | Link |
-|---|---|---|---|
-| Prompts | Add Feature | Prompt template for generating new modules with tests | [add-feature.md](vibe-coding/prompts/add-feature.md) |
-| Prompts | Bugfix | Prompt for root-cause + fix + regression test | [bugfix.md](vibe-coding/prompts/bugfix.md) |
-| Prompts | Repo Refactor | Prompt for safe restructuring | [repo-refactor.md](vibe-coding/prompts/repo-refactor.md) |
-| Prompts | Documentation | Prompt for writing docs and JSDoc | [documentation.md](vibe-coding/prompts/documentation.md) |
-| Prompts | PR Description | Prompt for drafting PRs and changelogs | [pr-description-changelog.md](vibe-coding/prompts/pr-description-changelog.md) |
-| Guardrails | AI Change Checklist | Pre-commit checklist for AI-generated code | [ai-change-checklist.md](vibe-coding/guardrails/ai-change-checklist.md) |
-| Guardrails | Review Rubric | Scoring rubric for reviewing AI PRs | [review-rubric.md](vibe-coding/guardrails/review-rubric.md) |
-| Docs | Vibe Coding Guide | Golden-path workflow for AI-assisted development | [VIBE_CODING.md](docs/VIBE_CODING.md) |
-| Docs | Style Guide | Conventions including AI-assisted edit policy | [STYLE_GUIDE.md](docs/STYLE_GUIDE.md) |
-| Docs | Usage Guide | How to use and customise these templates | [USAGE.md](docs/USAGE.md) |
-| Docs | Pattern Index | Key patterns with when-to-use guidance | [PATTERNS.md](docs/PATTERNS.md) |
-| Docs | Testing Guide | Full testing practices and tools reference | [TESTING.md](docs/developer/TESTING.md) |
-| Docs | Doc Standards | Documentation formatting and structure rules | [DOC_STANDARDS.md](docs/DOC_STANDARDS.md) |
-| Docs | ADR Template | Architecture Decision Record template | [ADR_TEMPLATE.md](docs/architecture/ADR_TEMPLATE.md) |
+| Area       | Name                | Purpose for vibe coding                               | Link                                                                           |
+| ---------- | ------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Prompts    | Add Feature         | Prompt template for generating new modules with tests | [add-feature.md](vibe-coding/prompts/add-feature.md)                           |
+| Prompts    | Bugfix              | Prompt for root-cause + fix + regression test         | [bugfix.md](vibe-coding/prompts/bugfix.md)                                     |
+| Prompts    | Repo Refactor       | Prompt for safe restructuring                         | [repo-refactor.md](vibe-coding/prompts/repo-refactor.md)                       |
+| Prompts    | Documentation       | Prompt for writing docs and JSDoc                     | [documentation.md](vibe-coding/prompts/documentation.md)                       |
+| Prompts    | PR Description      | Prompt for drafting PRs and changelogs                | [pr-description-changelog.md](vibe-coding/prompts/pr-description-changelog.md) |
+| Guardrails | AI Change Checklist | Pre-commit checklist for AI-generated code            | [ai-change-checklist.md](vibe-coding/guardrails/ai-change-checklist.md)        |
+| Guardrails | Review Rubric       | Scoring rubric for reviewing AI PRs                   | [review-rubric.md](vibe-coding/guardrails/review-rubric.md)                    |
+| Docs       | Vibe Coding Guide   | Golden-path workflow for AI-assisted development      | [VIBE_CODING.md](docs/VIBE_CODING.md)                                          |
+| Docs       | Style Guide         | Conventions including AI-assisted edit policy         | [STYLE_GUIDE.md](docs/STYLE_GUIDE.md)                                          |
+| Docs       | Usage Guide         | How to use and customise these templates              | [USAGE.md](docs/USAGE.md)                                                      |
+| Docs       | Pattern Index       | Key patterns with when-to-use guidance                | [PATTERNS.md](docs/PATTERNS.md)                                                |
+| Docs       | Testing Guide       | Full testing practices and tools reference            | [TESTING.md](docs/developer/TESTING.md)                                        |
+| Docs       | Doc Standards       | Documentation formatting and structure rules          | [DOC_STANDARDS.md](docs/DOC_STANDARDS.md)                                      |
+| Docs       | ADR Template        | Architecture Decision Record template                 | [ADR_TEMPLATE.md](docs/architecture/ADR_TEMPLATE.md)                           |
 
 ### Automations (CI / GitHub)
 
-| Area | Name | Purpose for vibe coding | Link |
-|---|---|---|---|
-| CI | Main CI | Lint, test, build, markdown lint, gitleaks | [ci.yml](.github/workflows/ci.yml) |
-| CI | CodeQL | Weekly + PR security analysis | [codeql.yml](.github/workflows/codeql.yml) |
-| CI | PR Validation | Enforce conventional PR titles and branch names | [pr-validation.yml](.github/workflows/pr-validation.yml) |
-| CI | Release | Tag-triggered release with notes validation | [release.yml](.github/workflows/release.yml) |
-| CI | Sync Instructions | Keep agent-instructions.md and copilot-instructions.md in sync | [sync-instructions.yml](.github/workflows/sync-instructions.yml) |
-| GitHub | PR Template | Structured PR description with AI-assisted changes section | [PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md) |
-| GitHub | Bug Report | Issue template for bugs | [bug_report.md](.github/ISSUE_TEMPLATE/bug_report.md) |
-| GitHub | Feature Request | Issue template for features | [feature_request.md](.github/ISSUE_TEMPLATE/feature_request.md) |
-| GitHub | Docs Issue | Issue template for documentation | [documentation.md](.github/ISSUE_TEMPLATE/documentation.md) |
-| GitHub | CODEOWNERS | Auto-request reviews | [CODEOWNERS](.github/CODEOWNERS) |
-| GitHub | Dependabot | Automated dependency updates | [dependabot.yml](.github/dependabot.yml) |
+| Area   | Name              | Purpose for vibe coding                                        | Link                                                             |
+| ------ | ----------------- | -------------------------------------------------------------- | ---------------------------------------------------------------- |
+| CI     | Main CI           | Lint, test, build, markdown lint, gitleaks                     | [ci.yml](.github/workflows/ci.yml)                               |
+| CI     | CodeQL            | Weekly + PR security analysis                                  | [codeql.yml](.github/workflows/codeql.yml)                       |
+| CI     | PR Validation     | Enforce conventional PR titles and branch names                | [pr-validation.yml](.github/workflows/pr-validation.yml)         |
+| CI     | Release           | Tag-triggered release with notes validation                    | [release.yml](.github/workflows/release.yml)                     |
+| CI     | Sync Instructions | Keep agent-instructions.md and copilot-instructions.md in sync | [sync-instructions.yml](.github/workflows/sync-instructions.yml) |
+| GitHub | PR Template       | Structured PR description with AI-assisted changes section     | [PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)     |
+| GitHub | Bug Report        | Issue template for bugs                                        | [bug_report.md](.github/ISSUE_TEMPLATE/bug_report.md)            |
+| GitHub | Feature Request   | Issue template for features                                    | [feature_request.md](.github/ISSUE_TEMPLATE/feature_request.md)  |
+| GitHub | Docs Issue        | Issue template for documentation                               | [documentation.md](.github/ISSUE_TEMPLATE/documentation.md)      |
+| GitHub | CODEOWNERS        | Auto-request reviews                                           | [CODEOWNERS](.github/CODEOWNERS)                                 |
+| GitHub | Dependabot        | Automated dependency updates                                   | [dependabot.yml](.github/dependabot.yml)                         |
 
 ### Code templates
 
-| Area | Name | Purpose for vibe coding | Link |
-|---|---|---|---|
-| Testing | No-network harness | Blocks real API calls in AI-generated tests | [test/setup.ts](test/setup.ts) |
-| Testing | Sample unit test | Shows the expected test structure | [test/sample.test.ts](test/sample.test.ts) |
-| Testing | A11y E2E suite | Accessibility-first Playwright tests | [test/e2e/accessibility.spec.ts](test/e2e/accessibility.spec.ts) |
-| Testing | UI component E2E | ARIA-locator-based component tests | [test/e2e/ui-components.spec.ts](test/e2e/ui-components.spec.ts) |
-| Scripts | Branch validator | Enforces branch naming conventions | [scripts/validate-branch.js](scripts/validate-branch.js) |
-| Scripts | Release notes validator | Ensures release notes structure | [scripts/validate-release-notes.js](scripts/validate-release-notes.js) |
-| Scripts | Sendit | Interactive commit + push helper | [scripts/sendit.js](scripts/sendit.js) |
-| Config | Copilot instructions | AI agent instructions for this repo | [agent-instructions.md](agent-instructions.md) |
+| Area    | Name                    | Purpose for vibe coding                     | Link                                                                   |
+| ------- | ----------------------- | ------------------------------------------- | ---------------------------------------------------------------------- |
+| Testing | No-network harness      | Blocks real API calls in AI-generated tests | [test/setup.ts](test/setup.ts)                                         |
+| Testing | Sample unit test        | Shows the expected test structure           | [test/sample.test.ts](test/sample.test.ts)                             |
+| Testing | A11y E2E suite          | Accessibility-first Playwright tests        | [test/e2e/accessibility.spec.ts](test/e2e/accessibility.spec.ts)       |
+| Testing | UI component E2E        | ARIA-locator-based component tests          | [test/e2e/ui-components.spec.ts](test/e2e/ui-components.spec.ts)       |
+| Scripts | Branch validator        | Enforces branch naming conventions          | [scripts/validate-branch.js](scripts/validate-branch.js)               |
+| Scripts | Release notes validator | Ensures release notes structure             | [scripts/validate-release-notes.js](scripts/validate-release-notes.js) |
+| Scripts | Sendit                  | Interactive commit + push helper            | [scripts/sendit.js](scripts/sendit.js)                                 |
+| Config  | Copilot instructions    | AI agent instructions for this repo         | [agent-instructions.md](agent-instructions.md)                         |
 
 ---
 
@@ -201,11 +201,11 @@ ls vibe-coding/guardrails/
 Concrete walkthroughs showing the guardrails in action:
 
 - [ESLint catches unsafe AI output](vibe-coding/examples/lint-catch/) —
-  AI generates code with ``any`` types and ``console.log``;
+  AI generates code with `any` types and `console.log`;
   lint blocks the commit.
 - [Test harness blocks network call](vibe-coding/examples/test-network-catch/) —
   AI writes a test that calls a real API;
-  ``test/setup.ts`` catches it instantly.
+  `test/setup.ts` catches it instantly.
 - [No-network unit testing pattern](examples/no-network-unit-tests.md) — How to write isolated tests that never touch the network.
 - [Accessibility smoke suite](examples/playwright-accessibility-smoke.md) — ARIA-first Playwright tests without a dev server.
 
@@ -213,24 +213,24 @@ Concrete walkthroughs showing the guardrails in action:
 
 ## Development scripts
 
-| Script | Description |
-|---|---|
-| ``npm run validate`` | Lint + type-check + test (the one command you need) |
-| ``npm run lint`` | ESLint with zero warnings |
-| ``npm run lint:fix`` | Auto-fix lint issues |
-| ``npm run lint:md`` | Markdown lint |
-| ``npm run format`` | Prettier format all files |
-| ``npm run format:check`` | Check formatting without writing |
-| ``npm test`` | Unit tests |
-| ``npm run test:unit`` | Unit tests with coverage |
-| ``npm run test:watch`` | Watch mode for TDD |
-| ``npm run test:e2e`` | Full Playwright E2E suite |
-| ``npm run test:e2e:smoke`` | Smoke tests only (``@smoke`` tag) |
-| ``npm run type-check`` | TypeScript strict type check |
-| ``npm run build`` | Compile and build |
-| ``npm run validate:branch`` | Check branch name |
-| ``npm run validate:release-notes`` | Check release notes format |
-| ``npm run sendit`` | Interactive commit + push helper |
+| Script                           | Description                                         |
+| -------------------------------- | --------------------------------------------------- |
+| `npm run validate`               | Lint + type-check + test (the one command you need) |
+| `npm run lint`                   | ESLint with zero warnings                           |
+| `npm run lint:fix`               | Auto-fix lint issues                                |
+| `npm run lint:md`                | Markdown lint                                       |
+| `npm run format`                 | Prettier format all files                           |
+| `npm run format:check`           | Check formatting without writing                    |
+| `npm test`                       | Unit tests                                          |
+| `npm run test:unit`              | Unit tests with coverage                            |
+| `npm run test:watch`             | Watch mode for TDD                                  |
+| `npm run test:e2e`               | Full Playwright E2E suite                           |
+| `npm run test:e2e:smoke`         | Smoke tests only (`@smoke` tag)                     |
+| `npm run type-check`             | TypeScript strict type check                        |
+| `npm run build`                  | Compile and build                                   |
+| `npm run validate:branch`        | Check branch name                                   |
+| `npm run validate:release-notes` | Check release notes format                          |
+| `npm run sendit`                 | Interactive commit + push helper                    |
 
 ---
 

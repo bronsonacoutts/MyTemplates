@@ -38,11 +38,11 @@ assignees: ''
 
 ## Impact Assessment
 
-| Area | Impact |
-|---|---|
-| Breaking change? | Yes / No |
-| Documentation needed? | Yes / No |
-| New dependencies? | Yes / No |
+| Area                      | Impact   |
+| ------------------------- | -------- |
+| Breaking change?          | Yes / No |
+| Documentation needed?     | Yes / No |
+| New dependencies?         | Yes / No |
 | Performance implications? | Yes / No |
 
 ## Checklist

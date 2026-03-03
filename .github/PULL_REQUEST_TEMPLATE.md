@@ -74,6 +74,20 @@ Closes #<!-- issue number -->
 
 ---
 
+## AI-Assisted Changes
+
+<!-- If any part of this PR was generated or assisted by an AI tool, fill in this section. Reviewers use this to calibrate review depth. -->
+
+- [ ] **Were any changes AI-assisted?**
+- **Tool used:** <!-- e.g. GitHub Copilot, ChatGPT, Claude -->
+- **Prompt template used:** <!-- e.g. vibe-coding/prompts/add-feature.md, or "custom" -->
+- **Areas touched by AI:** <!-- e.g. src/utils/slugify.ts, test/utils/slugify.test.ts -->
+- [ ] AI-generated code reviewed line-by-line — I can explain every change
+- [ ] [AI change checklist](../vibe-coding/guardrails/ai-change-checklist.md) completed
+- [ ] No hallucinated imports, packages, or API calls
+
+---
+
 ## Screenshots / Additional Notes
 
 <!-- Optional: include screenshots, before/after comparisons, or any other context helpful for reviewers. -->

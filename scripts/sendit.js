@@ -5,7 +5,7 @@
  * Usage: npm run sendit [optional-message]
  */
 
-const { execSync } = require('child_process');
+import { execSync } from 'node:child_process';
 
 const commitMessage = process.argv.slice(2).join(' ') || 'Quick update';
 

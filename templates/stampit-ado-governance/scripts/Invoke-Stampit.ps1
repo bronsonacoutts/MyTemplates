@@ -599,6 +599,7 @@ foreach ($topic in $groupKeys) {
                 Write-Info "Existing work item: [$wiType] $wiTitle"
             } catch {
                 Write-Warn "Could not fetch existing work item #$existingId; using suggested defaults."
+                $wiType = $suggestedWiType
             }
         } else {
             Write-Host ''

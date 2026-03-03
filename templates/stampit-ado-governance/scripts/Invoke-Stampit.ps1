@@ -638,7 +638,7 @@ foreach ($topic in $groupKeys) {
     # Stage files
     foreach ($f in $files) {
         if ($WhatIfOnly) { Write-Dry "Would: git add -- '$($f.Path)'" }
-        else { git add -- $f.Path 2>&1 | Out-Null }
+        else { git add -- "$($f.Path)" 2>&1 | Out-Null }
     }
 
     # Commit policy check

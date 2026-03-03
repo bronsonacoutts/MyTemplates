@@ -208,6 +208,27 @@ For significant changes:
 2. Wait for feedback from maintainers
 3. Get approval before investing significant time
 
+## 🤖 AI-Assisted Contributions
+
+AI-generated code is welcome. Treat it exactly like code you wrote by hand — you are responsible for it.
+
+### Rules for AI-assisted PRs
+
+1. **Run `npm run validate` before pushing.** This catches the most common AI mistakes (type holes, missing tests, formatting drift).
+2. **Generate tests alongside code.** Never submit AI-generated source without corresponding unit tests.
+3. **Walk the [AI change checklist](vibe-coding/guardrails/ai-change-checklist.md)** before opening the PR.
+4. **Fill in the PR template's AI-Assisted Changes section.** Reviewers use this to decide how carefully to read the diff.
+5. **Use the prompt templates** in [vibe-coding/prompts/](vibe-coding/prompts/) — they already include the repo's constraints.
+6. **No `any` types, no `@ts-ignore`.** Use `unknown` with type guards instead.
+7. **Mock all network calls in tests.** The [test/setup.ts](test/setup.ts) harness rejects tests that forget.
+8. **Use Australian English** in documentation and user-facing strings.
+9. **Review every line.** Do not commit code you cannot explain. AI output can look correct while being subtly wrong.
+10. **Use the `copilot/` branch prefix** for AI-generated branches (e.g. `copilot/fix-typo-in-readme`).
+
+### Recommended workflow
+
+See the [Vibe Coding Guide](docs/VIBE_CODING.md) for the full golden-path workflow covering prompt selection, validation, and PR submission.
+
 ## 💬 Getting Help
 
 - Open an issue for bugs or feature requests

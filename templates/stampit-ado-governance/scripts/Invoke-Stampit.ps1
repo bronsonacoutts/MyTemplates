@@ -673,6 +673,11 @@ foreach ($topic in $groupKeys) {
     }
 
     # Commit
+    # Ensure commit message type reflects the final branch name (in case the user overrode it)
+    $derivedBranchType = ($branchName -split '/')[0]
+    if (-not [string]::IsNullOrWhiteSpace($derivedBranchType)) {
+        $branchType = $derivedBranchType
+    }
     $commitMsg = "$branchType`: $wiTitle AB#$wiId"
     if (-not $AutoWorkItems) { $commitMsg = Read-UserInput "  Commit message" $commitMsg }
 

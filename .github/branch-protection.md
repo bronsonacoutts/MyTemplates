@@ -21,20 +21,20 @@ Navigate to **Settings → Branches → Add branch protection rule** and enter `
 
 ### Protect matching branches
 
-| Setting                                                          | Value                    | Reason                                                                 |
-| ---------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------- |
-| Require a pull request before merging                            | ✅ Enabled               | No direct pushes to main                                               |
-| Required number of approvals before merging                      | **0**                    | Solo maintainer cannot self-approve; set to ≥ 1 for multi-maintainer  |
-| Dismiss stale pull request approvals when new commits are pushed | ✅ Enabled               | Re-review after new changes                                            |
-| Require review from Code Owners                                  | ❌ Disabled              | Must be off when sole maintainer is the only CODEOWNER                 |
-| Require status checks to pass before merging                     | ✅ Enabled               | CI must pass                                                           |
-| Required status checks                                           | `validate`               | The CI job from ci.yml                                                 |
-| Require branches to be up to date before merging                 | ✅ Enabled               | Prevents stale merges                                                  |
-| Require conversation resolution before merging                   | ✅ Enabled               | All review comments resolved                                           |
-| Require linear history                                           | ✅ Enabled (recommended) | Keeps git history clean                                                |
+| Setting                                                          | Value                    | Reason                                                                  |
+| ---------------------------------------------------------------- | ------------------------ | ----------------------------------------------------------------------- |
+| Require a pull request before merging                            | ✅ Enabled               | No direct pushes to main                                                |
+| Required number of approvals before merging                      | **0**                    | Solo maintainer cannot self-approve; set to ≥ 1 for multi-maintainer    |
+| Dismiss stale pull request approvals when new commits are pushed | ✅ Enabled               | Re-review after new changes                                             |
+| Require review from Code Owners                                  | ❌ Disabled              | Must be off when sole maintainer is the only CODEOWNER                  |
+| Require status checks to pass before merging                     | ✅ Enabled               | CI must pass                                                            |
+| Required status checks                                           | `validate`               | The CI job from ci.yml                                                  |
+| Require branches to be up to date before merging                 | ✅ Enabled               | Prevents stale merges                                                   |
+| Require conversation resolution before merging                   | ✅ Enabled               | All review comments resolved                                            |
+| Require linear history                                           | ✅ Enabled (recommended) | Keeps git history clean                                                 |
 | Include administrators                                           | ❌ Disabled              | Must be off so the sole maintainer (repo owner) can merge their own PRs |
-| Allow force pushes                                               | ❌ Disabled              | Preserve history                                                       |
-| Allow deletions                                                  | ❌ Disabled              | Prevent accidental deletion                                            |
+| Allow force pushes                                               | ❌ Disabled              | Preserve history                                                        |
+| Allow deletions                                                  | ❌ Disabled              | Prevent accidental deletion                                             |
 
 > **Note for solo maintainers:** GitHub does not allow PR authors to approve their own pull requests.
 > If you are the sole CODEOWNER, you must set **Required number of approvals to 0**, disable

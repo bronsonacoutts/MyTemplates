@@ -1,0 +1,15 @@
+--- .github/workflows/codeql.yml
++++ .github/workflows/codeql.yml
+@@ -4,9 +4,9 @@
+   push:
+     branches:
+       - main
+-  pull_request:
+-    branches:
+-      - main
++  # pull_request:
++  #   branches:
++  #     - main
+   schedule:
+     # Run weekly on Mondays at 08:00 UTC
+     - cron: '0 8 * * 1'

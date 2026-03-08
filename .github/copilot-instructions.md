@@ -41,7 +41,7 @@ This repository is a **TypeScript/Node.js project template** providing comprehen
 
 | Branch    | Purpose                                                                  |
 | --------- | ------------------------------------------------------------------------ |
-| `main`    | Production-ready code. Protected. Requires PR + 1 approval + all checks. |
+| `main`    | Production-ready code. Protected. Requires PR + all CI checks. Sole maintainer can merge without an additional approving review. |
 | `develop` | Integration branch. All feature work merges here first.                  |
 | `staging` | Pre-production validation. Mirrors production environment.               |
 
@@ -309,7 +309,7 @@ docs/
 ### Requirements before merge
 
 - [ ] All CI checks pass (lint, format, unit tests).
-- [ ] At least **1 approving review** from a codeowner.
+- [ ] Approving review from a codeowner (required when there are multiple maintainers; skip if you are the sole maintainer — GitHub does not allow self-approval).
 - [ ] No unresolved review comments.
 - [ ] Branch is up to date with the target branch.
 - [ ] Coverage thresholds maintained (no regressions).

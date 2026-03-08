@@ -1,0 +1,12 @@
+--- .github/workflows/pr-validation.yml
++++ .github/workflows/pr-validation.yml
+@@ -9,7 +9,8 @@
+   validate-pr-title:
+     name: Validate PR Title
+     runs-on: ubuntu-latest
+-    permissions: {}
++    permissions:
++      pull-requests: read
+     steps:
+       - name: Check PR title follows Conventional Commits
+         uses: amannn/action-semantic-pull-request@v5

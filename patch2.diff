@@ -1,11 +1,11 @@
 --- .github/workflows/codeql.yml
 +++ .github/workflows/codeql.yml
-@@ -19,6 +19,8 @@
+@@ -19,8 +19,7 @@
      permissions:
        actions: read
        contents: read
        security-events: write
-+      # Need 'security-events: read' as well as per the error log
-+      security-events: read
+-      # Need 'security-events: read' as well as per the error log
+-      security-events: read
 
      strategy:

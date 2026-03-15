@@ -39,11 +39,11 @@ This repository is a **TypeScript/Node.js project template** providing comprehen
 
 ### Long-lived branches
 
-| Branch    | Purpose                                                                  |
-| --------- | ------------------------------------------------------------------------ |
+| Branch    | Purpose                                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `main`    | Production-ready code. Protected. Requires PR + all CI checks. Sole maintainer can merge without an additional approving review. |
-| `develop` | Integration branch. All feature work merges here first.                  |
-| `staging` | Pre-production validation. Mirrors production environment.               |
+| `develop` | Integration branch. All feature work merges here first.                                                                          |
+| `staging` | Pre-production validation. Mirrors production environment.                                                                       |
 
 ### Short-lived branch prefixes
 

@@ -1,5 +1,12 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-npm run validate:branch
-npm run type-check
-npm test
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+if [ -d "$repo_root/node_modules" ]; then
+  cd "$repo_root" || exit 1
+  npm run validate:branch
+  npm run type-check
+  npm test
+else
+  echo "Skipping pre-push: project dependencies are not installed. Run npm install." >&2
+fi

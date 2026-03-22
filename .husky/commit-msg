@@ -1,3 +1,10 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-npx --no -- commitlint --edit "$1"
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+if [ -x "$repo_root/node_modules/.bin/commitlint" ]; then
+  cd "$repo_root" || exit 1
+  npx --no -- commitlint --edit "$1"
+else
+  echo "Skipping commit-msg: commitlint is not installed. Run npm install." >&2
+fi

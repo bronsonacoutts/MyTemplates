@@ -16,6 +16,7 @@
     "type-check": "tsc --noEmit",
     "build": "tsc && vite build",
     "validate:branch": "node scripts/validate-branch.js",
+    "validate:catalog": "node scripts/validate-template-metadata.js",
     "validate:release-notes": "node scripts/validate-release-notes.js",
     "validate": "npm run lint && npm run type-check && npm test",
     "sync-instructions": "node scripts/sync-instructions.js",

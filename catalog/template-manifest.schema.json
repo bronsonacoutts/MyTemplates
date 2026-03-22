@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MyTemplates Template Manifest",
+  "description": "Validation contract for template and pack manifests published by the MyTemplates hub.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "type",
+    "status",
+    "maturity",
+    "audience",
+    "stack",
+    "summary"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^(template|pack)\\.[a-z0-9-]+(?:\\.[a-z0-9-]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "enum": ["template", "pack"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["present", "planned"]
+    },
+    "maturity": {
+      "type": "string",
+      "enum": ["planned", "incubating", "ready"]
+    },
+    "audience": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "stack": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "manifest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["phase-1", "phase-2", "phase-3", "phase-4"]
+    },
+    "aiPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instructionsPack",
+        "globalSource",
+        "localOverride",
+        "mirrorFiles",
+        "syncScript",
+        "promptInjectionDefense"
+      ],
+      "properties": {
+        "instructionsPack": {
+          "type": "string",
+          "pattern": "^pack\\.[a-z0-9-]+(?:\\.[a-z0-9-]+)*$"
+        },
+        "globalSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "localOverride": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mirrorFiles": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "syncScript": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promptInjectionDefense": {
+          "type": "string",
+          "enum": ["required"]
+        }
+      }
+    },
+    "backlog": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^docs/migration/issues/.+\\.md$"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

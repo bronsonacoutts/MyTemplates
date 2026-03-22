@@ -24,7 +24,7 @@ You are working in the `MyTemplates` repository. Prepare the dedicated Power Pla
 
 Read first:
 - `docs/TEMPLATE_LIBRARY_STRATEGY.md`
-- `templates/stampit-ado-governance/`
+- `templates/commitship-ado-governance/`
 - governance and release-process docs in this repo
 
 Objective:
@@ -34,7 +34,7 @@ Required work:
 1. Document the template scope, audience, and differentiation from PCF and Code App templates.
 2. Specify expected environment-strategy docs, pipeline quality gates, and release governance assets.
 3. Add catalogue/roadmap references and any reusable pack dependencies.
-4. Make the relationship to `stampit-ado-governance` explicit.
+4. Make the relationship to `commitship-ado-governance` explicit.
 
 Constraints:
 - Keep the focus on ALM/governance rather than application scaffolding.

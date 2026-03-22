@@ -40,7 +40,7 @@ if ($message -match '^(Merge|Revert)\b') {
 if ($message -notmatch 'AB#[0-9]+') {
     throw @"
 Commit message must include an ADO work item reference (AB#1234).
-All commits must be made via scripts/Invoke-Stampit.ps1 which ensures this automatically.
+All commits must be made via scripts/Invoke-Commitship.ps1 which ensures this automatically.
 "@
 }
 

@@ -1,4 +1,4 @@
 #!/bin/sh
 # commit-msg hook — enforces work item traceability on every commit.
-# All commits must be created via scripts/Invoke-Stampit.ps1.
+# All commits must be created via scripts/Invoke-Commitship.ps1.
 pwsh -NonInteractive -File "$(git rev-parse --show-toplevel)/scripts/Test-CommitMessage.ps1" -MessageFile "$1"

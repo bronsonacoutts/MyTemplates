@@ -1,10 +1,10 @@
-# Stampit — ADO Governed Commit & Ship Template
+# Commitship — ADO Governed Commit & Ship Template
 
 A PowerShell-based commit governance toolkit for software projects using **Azure DevOps** for work item tracking and pull requests.
 
 ## What It Does
 
-The `stampit` trigger (`Invoke-Stampit.ps1`) replaces raw `git commit` for all developer and AI-agent commits. It:
+The `commitship` trigger (`Invoke-Commitship.ps1`) replaces raw `git commit` for all developer and AI-agent commits. It:
 
 1. Detects all dirty/staged files in your workspace.
 2. Groups them into logical commit bundles by topic (heuristic + user confirmation).
@@ -32,17 +32,17 @@ Copy the contents of this directory into the root of your project:
   pre-push
 scripts/
   Install-GitHooks.ps1
-  Invoke-Stampit.ps1
+  Invoke-Commitship.ps1
   Test-CommitMessage.ps1
   Test-CommitPolicy.ps1
   Test-PullRequestReadiness.ps1
   Test-PushPolicy.ps1
-stampit.config.ps1
+commitship.config.ps1
 ```
 
-### 2. Fill in `stampit.config.ps1`
+### 2. Fill in `commitship.config.ps1`
 
-Edit `stampit.config.ps1` at the repo root and set your ADO org, project, area path, and iteration path.
+Edit `commitship.config.ps1` at the repo root and set your ADO org, project, area path, and iteration path.
 
 ### 3. Install git hooks (once per clone)
 
@@ -67,27 +67,27 @@ The PAT needs: **Work Items (Read & Write)**, **Code (Read & Write)**, **Pull Re
 ### Trigger the full workflow
 
 ```powershell
-./scripts/Invoke-Stampit.ps1
+./scripts/Invoke-Commitship.ps1
 ```
 
-Or use the `stampit` phrase as a trigger in your AI coding agent session.
+Or use the `commitship` phrase as a trigger in your AI coding agent session.
 
 ### Dry run (no mutations)
 
 ```powershell
-./scripts/Invoke-Stampit.ps1 -WhatIfOnly
+./scripts/Invoke-Commitship.ps1 -WhatIfOnly
 ```
 
 ### Skip follow-up task scan
 
 ```powershell
-./scripts/Invoke-Stampit.ps1 -SkipFollowUpScan
+./scripts/Invoke-Commitship.ps1 -SkipFollowUpScan
 ```
 
 ### Auto work items (skip per-bundle confirmation prompts)
 
 ```powershell
-./scripts/Invoke-Stampit.ps1 -AutoWorkItems
+./scripts/Invoke-Commitship.ps1 -AutoWorkItems
 ```
 
 ---
@@ -96,7 +96,7 @@ Or use the `stampit` phrase as a trigger in your AI coding agent session.
 
 ### File grouping heuristic
 
-Edit `Get-TopicForFile` in `Invoke-Stampit.ps1` to match your project's folder structure.
+Edit `Get-TopicForFile` in `Invoke-Commitship.ps1` to match your project's folder structure.
 
 ### Work item types and branch types
 
@@ -117,15 +117,15 @@ Edit the `$governedDocPattern` in `Test-CommitPolicy.ps1` to define which doc ch
 | Gate                                   | Script                          | Trigger                                     |
 | -------------------------------------- | ------------------------------- | ------------------------------------------- |
 | Commit message requires `AB#<id>`      | `Test-CommitMessage.ps1`        | `commit-msg` git hook                       |
-| Branch naming + protected branch guard | `Test-CommitPolicy.ps1`         | Called by `Invoke-Stampit.ps1`              |
+| Branch naming + protected branch guard | `Test-CommitPolicy.ps1`         | Called by `Invoke-Commitship.ps1`           |
 | No direct push to `main`/`release/*`   | `Test-PushPolicy.ps1`           | `pre-push` git hook                         |
-| PR readiness before PR creation        | `Test-PullRequestReadiness.ps1` | Called by `Invoke-Stampit.ps1` + `pre-push` |
+| PR readiness before PR creation        | `Test-PullRequestReadiness.ps1` | Called by `Invoke-Commitship.ps1` + `pre-push` |
 
 ---
 
 ## Forbidden Operations
 
-- `git commit` without going through `Invoke-Stampit.ps1`.
+- `git commit` without going through `Invoke-Commitship.ps1`.
 - `git push --force` under any circumstances.
 - Direct commits to `main` or `release/*`.
 - Bypassing `Test-CommitPolicy.ps1` or `Test-PullRequestReadiness.ps1`.

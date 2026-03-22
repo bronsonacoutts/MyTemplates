@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-Installs the Stampit git hooks for local enforcement.
+Installs the Commitship git hooks for local enforcement.
 
 .DESCRIPTION
 Configures git to use the .githooks/ directory as the active hooks path.
 This enforces commit-msg and pre-push policies locally, requiring all
-commits to be made via scripts/Invoke-Stampit.ps1.
+commits to be made via scripts/Invoke-Commitship.ps1.
 
 Run once after cloning or re-cloning the repository.
 
@@ -31,4 +31,4 @@ git config core.hooksPath .githooks
 Write-Host '[PASS] Git hooks installed.' -ForegroundColor Green
 Write-Host "       Hooks path : $hooksPath" -ForegroundColor Cyan
 Write-Host '       Active hooks: commit-msg, pre-push' -ForegroundColor Cyan
-Write-Host '       All commits must be made via: scripts/Invoke-Stampit.ps1' -ForegroundColor Yellow
+Write-Host '       All commits must be made via: scripts/Invoke-Commitship.ps1' -ForegroundColor Yellow

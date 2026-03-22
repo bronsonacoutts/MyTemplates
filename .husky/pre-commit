@@ -1,3 +1,10 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-npx lint-staged
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+if [ -x "$repo_root/node_modules/.bin/lint-staged" ]; then
+  cd "$repo_root" || exit 1
+  npx lint-staged
+else
+  echo "Skipping pre-commit: lint-staged is not installed. Run npm install." >&2
+fi

@@ -25,7 +25,7 @@ You are working in the `MyTemplates` repository. Prepare the PCF template-repo d
 
 Read first:
 - `docs/TEMPLATE_LIBRARY_STRATEGY.md`
-- any existing Power Platform materials in this repo, including `templates/stampit-ado-governance/`
+- any existing Power Platform materials in this repo, including `templates/commitship-ado-governance/`
 - relevant README and docs standards files
 
 Objective:

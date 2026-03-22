@@ -1,7 +1,7 @@
-# stampit.config.ps1 — Project configuration for Invoke-Stampit.ps1
+# commitship.config.ps1 — Project configuration for Invoke-Commitship.ps1
 #
 # Copy this file to your repository root and fill in all values before first use.
-# This file is sourced automatically by Invoke-Stampit.ps1.
+# This file is sourced automatically by Invoke-Commitship.ps1.
 #
 # REQUIRED fields are marked. All others have sensible defaults.
 

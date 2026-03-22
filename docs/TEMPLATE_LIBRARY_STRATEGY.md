@@ -16,7 +16,7 @@ The goal is to keep shared governance, documentation standards, and agent instru
 - AI-agent and Copilot instruction files
 - reusable prompts, guardrails, and examples
 - GitHub workflows, branch-protection guidance, and release-process documentation
-- an existing domain-specific template in `templates/stampit-ado-governance/`
+- an existing domain-specific template in `templates/commitship-ado-governance/`
 
 ### Patterns visible in your public repos
 
@@ -66,14 +66,42 @@ Create separate repositories when the work has a different runtime, onboarding s
 
 ### Second wave
 
-6. **Tailwind UI variant or pack**
+1. **Tailwind UI variant or pack**
    - likely a Vite variant unless it grows into a distinct onboarding story
-7. **Power Automate knowledge-site template**
-   - for explainers and educational microsites like `MSApprovalsMastery`
-8. **Home Assistant / operations automation template**
+2. **Power Automate knowledge-site template**
+   - for explainers and educational micro-sites like `MSApprovalsMastery`
+3. **Home Assistant / operations automation template**
    - for secure automation-heavy repos like `ha-git-sync`
-9. **Power Platform ALM governance template**
-   - likely the natural expansion path for `stampit-ado-governance`
+4. **Power Platform ALM governance template**
+   - likely the natural expansion path for `commitship-ado-governance`
+
+## Definitive target repo set beyond `MyTemplates`
+
+The resulting repo estate beyond this hub should be the following **dedicated repositories**:
+
+1. **`template-power-platform-pcf`**
+   - dedicated repo for PCF controls, packaging, docs, and ALM guidance
+2. **`template-power-platform-codeapp`**
+   - dedicated repo for Power Platform code-app delivery and environment promotion guidance
+3. **`template-vite-web-app`**
+   - dedicated repo for interactive TypeScript SPA delivery
+4. **`template-vite-site`**
+   - dedicated repo for content, docs, and marketing-style sites
+5. **`template-power-automate-knowledge-site`**
+   - dedicated repo for focused Power Automate explainers and educational sites
+6. **`template-home-assistant-automation`**
+   - dedicated repo for Home Assistant and operations-heavy automation projects
+7. **`template-power-platform-alm-governance`**
+   - dedicated repo for ADO and Power Platform governance patterns built out from `commitship-ado-governance`
+
+The following should **not** become separate repos at this stage:
+
+- **Tailwind variant/pack**
+  - keep this as a variant layered onto the Vite template family unless it later proves to have its own runtime, onboarding, and CI/CD surface
+- **Governance retrofit pack**
+  - keep this as shared packs inside `MyTemplates` so existing repos can adopt governance without pulling a full starter template
+
+This gives the platform a definitive shape of **1 hub repo + 7 dedicated template repos**.
 
 ## Curation rule
 
@@ -105,7 +133,7 @@ MyTemplates/
 │   ├── release-management/
 │   └── testing-guardrails/
 ├── templates/
-│   └── stampit-ado-governance/
+│   └── commitship-ado-governance/
 ├── docs/
 │   ├── migration/
 │   ├── governance/

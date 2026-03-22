@@ -95,6 +95,10 @@ Automations that make vibe coding safe without slowing you down.
 
 Every template and automation in this repo, indexed by area.
 
+Machine-readable template metadata now lives in [catalog/templates.json](catalog/templates.json), with the manifest contract in [catalog/template-manifest.schema.json](catalog/template-manifest.schema.json), the selection guide in [catalog/decision-tree.md](catalog/decision-tree.md), and migration mapping in [catalog/roadmap.md](catalog/roadmap.md).
+
+Authoritative shared-pack inventories now live under [packs/](packs/README.md).
+
 ### Templates and docs
 
 | Area       | Name                | Purpose for vibe coding                               | Link                                                                           |
@@ -145,40 +149,16 @@ Every template and automation in this repo, indexed by area.
 
 ---
 
-## Flagship Vibe Coding Packs
+## Shared Packs
 
-### PR Guardrails Pack
+Reusable pack boundaries are now documented under [packs/](packs/README.md):
 
-Everything you need to keep AI-generated PRs safe and reviewable.
-
-- [PR template with AI-Assisted Changes section](.github/PULL_REQUEST_TEMPLATE.md)
-- [PR validation workflow](.github/workflows/pr-validation.yml) (conventional titles + branch names)
-- [AI change checklist](vibe-coding/guardrails/ai-change-checklist.md)
-- [AI code review rubric](vibe-coding/guardrails/review-rubric.md)
-- [Gitleaks secret scan in CI](.github/workflows/ci.yml)
-
-### Prompt Pack
-
-Ready-to-paste prompts that give AI tools the right constraints for this repo.
-
-- [Add feature](vibe-coding/prompts/add-feature.md)
-- [Bugfix](vibe-coding/prompts/bugfix.md)
-- [Repo refactor](vibe-coding/prompts/repo-refactor.md)
-- [Documentation](vibe-coding/prompts/documentation.md)
-- [PR description + changelog](vibe-coding/prompts/pr-description-changelog.md)
-- [Copilot agent instructions](agent-instructions.md) (loaded automatically by GitHub Copilot)
-
-### Docs-as-Code Pack
-
-Documentation templates and standards that AI tools can follow consistently.
-
-- [Doc standards](docs/DOC_STANDARDS.md)
-- [ADR template](docs/architecture/ADR_TEMPLATE.md)
-- [Template library strategy](docs/TEMPLATE_LIBRARY_STRATEGY.md)
-- [Template library issue backlog](docs/migration/issues/README.md)
-- [Style guide](docs/STYLE_GUIDE.md)
-- [Markdown lint config](.markdownlint.json) + CI enforcement
-- [Documentation prompt](vibe-coding/prompts/documentation.md)
+- [GitHub Governance Pack](packs/github-governance/README.md)
+- [Azure DevOps Governance Pack](packs/azure-devops-governance/README.md)
+- [AI Agent Instructions Pack](packs/ai-agent-instructions/README.md)
+- [Docs-As-Code Pack](packs/docs-as-code/README.md)
+- [Release Management Pack](packs/release-management/README.md)
+- [Testing Guardrails Pack](packs/testing-guardrails/README.md)
 
 ---
 
@@ -218,6 +198,7 @@ Concrete walkthroughs showing the guardrails in action:
 | Script                           | Description                                         |
 | -------------------------------- | --------------------------------------------------- |
 | `npm run validate`               | Lint + type-check + test (the one command you need) |
+| `npm run validate:catalog`       | Validate template catalogue and manifest metadata   |
 | `npm run lint`                   | ESLint with zero warnings                           |
 | `npm run lint:fix`               | Auto-fix lint issues                                |
 | `npm run lint:md`                | Markdown lint                                       |

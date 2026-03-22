@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestSchema": "catalog/template-manifest.schema.json",
+  "entries": [
+    {
+      "id": "pack.ai-agent-instructions",
+      "name": "AI Agent Instructions Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["template maintainers", "AI-assisted delivery teams"],
+      "stack": ["Markdown", "GitHub Copilot", "Codex"],
+      "summary": "Shared AI governance, prompt-injection defense, and repo instruction defaults for downstream template repositories.",
+      "path": "packs/ai-agent-instructions",
+      "phase": "phase-1",
+      "backlog": [
+        "docs/migration/issues/02-shared-packs.md",
+        "docs/migration/issues/03-agent-instructions-sync.md"
+      ],
+      "notes": "Initial additive pack inventory. Canonical files remain in their current working paths until sync automation is introduced."
+    },
+    {
+      "id": "pack.azure-devops-governance",
+      "name": "Azure DevOps Governance Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["Azure DevOps maintainers", "governed delivery teams"],
+      "stack": ["Azure DevOps", "Git hooks", "Markdown"],
+      "summary": "Reusable governance assets for Azure DevOps repositories that need branch, work-item, and PR controls without adopting a full starter template.",
+      "path": "packs/azure-devops-governance",
+      "phase": "phase-1",
+      "backlog": [
+        "docs/migration/issues/02-shared-packs.md",
+        "docs/migration/issues/10-governance-retrofit-pack.md"
+      ],
+      "notes": "Current pack inventory is anchored in templates/stampit-ado-governance until the later ALM governance split is complete."
+    },
+    {
+      "id": "pack.docs-as-code",
+      "name": "Docs-as-Code Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["template maintainers", "docs-heavy repos"],
+      "stack": ["Markdown", "ADR", "Documentation standards"],
+      "summary": "Shared documentation templates, style guidance, and doc-quality guardrails that can be synced into downstream repos.",
+      "path": "packs/docs-as-code",
+      "phase": "phase-1",
+      "backlog": ["docs/migration/issues/02-shared-packs.md"],
+      "notes": "Migration backlog files remain hub-owned even though the documentation standards pack is now defined."
+    },
+    {
+      "id": "pack.github-governance",
+      "name": "GitHub Governance Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["GitHub repo maintainers", "retrofit adopters"],
+      "stack": ["GitHub Actions", "CODEOWNERS", "Markdown"],
+      "summary": "Reusable GitHub workflows, issue and PR templates, and repository policy files for teams that want the governance baseline without changing their runtime stack.",
+      "path": "packs/github-governance",
+      "phase": "phase-1",
+      "backlog": [
+        "docs/migration/issues/02-shared-packs.md",
+        "docs/migration/issues/10-governance-retrofit-pack.md"
+      ],
+      "notes": "Release-specific automation is intentionally owned by the release-management pack."
+    },
+    {
+      "id": "pack.release-management",
+      "name": "Release Management Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["template maintainers", "release managers"],
+      "stack": ["Markdown", "GitHub Actions", "Node.js"],
+      "summary": "Shared release-process docs, notes templates, and release validation helpers for downstream template repositories.",
+      "path": "packs/release-management",
+      "phase": "phase-1",
+      "backlog": ["docs/migration/issues/02-shared-packs.md"],
+      "notes": "Can be consumed independently by repos that do not need the full governance baseline."
+    },
+    {
+      "id": "pack.tailwind-ui",
+      "name": "Tailwind UI Pack",
+      "type": "pack",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["frontend template maintainers", "design-system consumers"],
+      "stack": ["Tailwind CSS", "Vite", "Design tokens"],
+      "summary": "Candidate styling layer for the Vite families, currently tracked as a pack-first option until the packaging decision is finalized.",
+      "phase": "phase-4",
+      "backlog": ["docs/migration/issues/09-tailwind-packaging-decision.md"],
+      "notes": "Packaging remains intentionally provisional until issue 09 is resolved."
+    },
+    {
+      "id": "pack.testing-guardrails",
+      "name": "Testing Guardrails Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["application template maintainers", "quality-focused teams"],
+      "stack": ["Vitest", "Playwright", "TypeScript"],
+      "summary": "Shared test harness, quality gates, and accessibility-first E2E defaults extracted from the current repo.",
+      "path": "packs/testing-guardrails",
+      "phase": "phase-1",
+      "backlog": ["docs/migration/issues/02-shared-packs.md"],
+      "notes": "CI execution remains owned by the GitHub governance pack."
+    },
+    {
+      "id": "template.operations-automation",
+      "name": "Operations Automation Template",
+      "type": "template",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["operations maintainers", "automation-heavy delivery teams"],
+      "stack": ["Shell", "YAML", "Runbooks", "Secrets documentation"],
+      "summary": "Dedicated template for operational automation repositories where rollback guidance, troubleshooting, and stronger governance matter more than app scaffolding.",
+      "phase": "phase-4",
+      "backlog": ["docs/migration/issues/12-template-home-assistant-automation.md"]
+    },
+    {
+      "id": "template.power-automate-knowledge-site",
+      "name": "Power Automate Knowledge Site Template",
+      "type": "template",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["content authors", "Power Automate educators"],
+      "stack": ["Vite", "Markdown", "Diagrams", "Static content"],
+      "summary": "Lightweight site template for explainers, process walkthroughs, and educational content similar to MSApprovalsMastery.",
+      "phase": "phase-4",
+      "backlog": ["docs/migration/issues/11-template-power-automate-knowledge-site.md"]
+    },
+    {
+      "id": "template.power-platform-alm-governance",
+      "name": "Power Platform ALM Governance Template",
+      "type": "template",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["Power Platform delivery leads", "governance-focused teams"],
+      "stack": ["PowerShell", "Azure DevOps", "ALM guidance", "Release governance"],
+      "summary": "Dedicated Power Platform governance and ALM template that grows out of the current stampit implementation without overlapping with app-focused starters.",
+      "phase": "phase-4",
+      "backlog": ["docs/migration/issues/13-template-power-platform-alm-governance.md"]
+    },
+    {
+      "id": "template.power-platform-code-app",
+      "name": "Power Platform Code App Template",
+      "type": "template",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["Power Platform makers", "delivery teams building code apps"],
+      "stack": ["TypeScript", "Power Platform", "Deployment guidance"],
+      "summary": "Dedicated repo starter for Power Platform Code App work with environment and deployment guidance.",
+      "phase": "phase-2",
+      "backlog": ["docs/migration/issues/06-template-power-platform-codeapp.md"]
+    },
+    {
+      "id": "template.power-platform-pcf",
+      "name": "Power Platform PCF Template",
+      "type": "template",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["PCF developers", "Power Platform engineering teams"],
+      "stack": ["TypeScript", "PAC CLI", "Packaging", "Testing"],
+      "summary": "Dedicated repo starter for Power Apps Component Framework controls with packaging, ALM, and testing guidance.",
+      "phase": "phase-2",
+      "backlog": ["docs/migration/issues/05-template-power-platform-pcf.md"]
+    },
+    {
+      "id": "template.stampit-ado-governance",
+      "name": "Stampit ADO Governance",
+      "type": "template",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["Azure DevOps maintainers", "teams with governed commit and PR flow"],
+      "stack": ["PowerShell", "Git hooks", "Azure DevOps"],
+      "summary": "PowerShell-based commit, branch, and pull request governance toolkit for repositories that use Azure DevOps work items and PRs.",
+      "path": "templates/stampit-ado-governance",
+      "manifest": "templates/stampit-ado-governance/template.manifest.json",
+      "aiPolicy": {
+        "instructionsPack": "pack.ai-agent-instructions",
+        "globalSource": "packs/ai-agent-instructions/global-instructions.md",
+        "localOverride": "agent-instructions.local.md",
+        "mirrorFiles": ["agent-instructions.md", ".github/copilot-instructions.md"],
+        "syncScript": "scripts/sync-instructions.js",
+        "promptInjectionDefense": "required"
+      },
+      "phase": "phase-1",
+      "backlog": ["docs/migration/issues/13-template-power-platform-alm-governance.md"],
+      "notes": "Current in-repo implementation that seeds the future ALM governance template work."
+    },
+    {
+      "id": "template.vite-site",
+      "name": "Vite Site Template",
+      "type": "template",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["documentation teams", "marketing and explainer site maintainers"],
+      "stack": ["Vite", "TypeScript", "Markdown", "Accessibility checks"],
+      "summary": "Dedicated repo starter for content-heavy documentation, marketing, and explainer sites with publishing-focused defaults.",
+      "phase": "phase-2",
+      "backlog": ["docs/migration/issues/08-template-vite-site.md"]
+    },
+    {
+      "id": "template.vite-web-app",
+      "name": "Vite Web App Template",
+      "type": "template",
+      "status": "planned",
+      "maturity": "planned",
+      "audience": ["frontend engineers", "interactive SPA teams"],
+      "stack": ["Vite", "TypeScript", "Vitest", "Playwright"],
+      "summary": "Dedicated repo starter for interactive Vite applications with strict TypeScript, tests, and extendable runtime guardrails.",
+      "phase": "phase-2",
+      "backlog": ["docs/migration/issues/07-template-vite-web-app.md"]
+    }
+  ]
+}

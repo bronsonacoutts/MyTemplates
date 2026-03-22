@@ -2,6 +2,8 @@
 
 This repo is a catalogue, not a one-click starter. Pick the bits you need, copy deliberately, and keep the guardrails intact.
 
+Shared reusable bundles are now grouped under [`packs/`](../packs/README.md). Start there when you need a coherent governance, docs, release, or testing slice rather than individual files.
+
 ### Recommended path (first 15 minutes)
 
 - Read the [README](../README.md) for the quickstart and catalogue.
@@ -18,6 +20,7 @@ npm test
 
 ### Choosing what to copy
 
+- **Need a reusable pack boundary first?** Start with the pack READMEs under [`packs/`](../packs/README.md) so you copy coherent groups of files instead of ad hoc fragments.
 - **Need a disciplined test harness?** Lift [test/setup.ts](../test/setup.ts) and the sample specs in [test/e2e](../test/e2e).
 - **Documenting decisions?** Start from [docs/architecture/ADR_TEMPLATE.md](architecture/ADR_TEMPLATE.md).
 - **Developer onboarding?** Reuse [docs/developer/SETUP.md](developer/SETUP.md) and [docs/developer/TESTING.md](developer/TESTING.md) as baseline runbooks.

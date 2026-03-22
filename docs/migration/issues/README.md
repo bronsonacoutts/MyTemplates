@@ -4,6 +4,8 @@ This folder contains issue-ready markdown files for executing the template libra
 
 Each issue includes a standalone **Prompt for Codex** section so it can be handed to Codex and executed independently.
 
+Use [00-template-library-tracker.md](00-template-library-tracker.md) as the sequencing and status source of truth across these issue drafts.
+
 ## Tracker
 
 - [00-template-library-tracker.md](00-template-library-tracker.md)

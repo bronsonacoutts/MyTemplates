@@ -1,0 +1,24 @@
+{
+  "$schema": "../../catalog/template-manifest.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "template.stampit-ado-governance",
+  "name": "Stampit ADO Governance",
+  "type": "template",
+  "status": "present",
+  "maturity": "incubating",
+  "audience": ["Azure DevOps maintainers", "teams with governed commit and PR flow"],
+  "stack": ["PowerShell", "Git hooks", "Azure DevOps"],
+  "summary": "PowerShell-based commit, branch, and pull request governance toolkit for repositories that use Azure DevOps work items and PRs.",
+  "path": "templates/stampit-ado-governance",
+  "aiPolicy": {
+    "instructionsPack": "pack.ai-agent-instructions",
+    "globalSource": "packs/ai-agent-instructions/global-instructions.md",
+    "localOverride": "agent-instructions.local.md",
+    "mirrorFiles": ["agent-instructions.md", ".github/copilot-instructions.md"],
+    "syncScript": "scripts/sync-instructions.js",
+    "promptInjectionDefense": "required"
+  },
+  "phase": "phase-1",
+  "backlog": ["docs/migration/issues/13-template-power-platform-alm-governance.md"],
+  "notes": "Current in-repo seed implementation for the future Power Platform ALM governance template."
+}

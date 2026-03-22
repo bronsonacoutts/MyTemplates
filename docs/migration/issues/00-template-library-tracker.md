@@ -1,57 +1,86 @@
-# Issue 00: Template library tracker
+# Template Library Migration Tracker
 
-## Goal
+This tracker is the maintainer view of the hub-and-spoke migration. It summarizes the phases from the strategy, records sequencing and dependencies, and shows the current disposition of every child issue exactly once.
 
-Track the full migration from a single broad template repo to a hub-and-spoke template library.
+## Status model
 
-## Scope
+- `done`: finished and accepted in the hub repo
+- `in progress`: active work underway now
+- `blocked`: accepted, but waiting on another issue
+- `future`: intentionally deferred to a later milestone
+- `rejected`: closed by decision and not moving forward
 
-This tracker coordinates all issue drafts in `docs/migration/issues/`.
+## Phase summary
 
-## Deliverables
+| Phase   | Intent                                             | Exit condition                                                                                                                 |
+| ------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Phase 1 | Establish the hub foundation inside `MyTemplates`. | Catalogue, manifest contract, pack boundaries, governance tiers, and instruction-sharing rules are documented.                 |
+| Phase 2 | Publish the first dedicated template families.     | The first-wave template definitions are clear enough to launch dedicated repos with shared governance dependencies identified. |
+| Phase 3 | Automate reuse and drift control.                  | Pack sync and metadata validation are repeatable and documented for downstream repos.                                          |
+| Phase 4 | Expand the library deliberately.                   | Second-wave families have either shipped, been folded into packs, or been explicitly deferred by a maintained decision.        |
 
-- master checklist linked to all child workstreams
-- status notes for sequencing and dependencies
-- clear definition of done for the migration
+## Authoritative boundaries
 
-## Acceptance criteria
+`MyTemplates` remains authoritative for:
 
-- every child issue is either completed, explicitly rejected, or moved to a future milestone
-- the hub repo clearly documents which assets are authoritative here versus downstream
+- shared packs and the files they inventory
+- template catalogue IDs, metadata, and manifest rules
+- governance tiers, repo settings guidance, and sync workflows
+- global AI-agent instruction policy and shared overrides model
 
-## Prompt for Codex
+Downstream template repos remain authoritative for:
 
-```text
-You are working in the `MyTemplates` repository. Execute the tracker work for the template-library migration.
+- runtime-specific source code and scaffolding
+- template-local README, setup, and deployment details
+- small template-specific agent-instruction overrides
+- release cadence and runtime-specific CI details that do not belong in shared packs
 
-Context to read first:
-- `docs/TEMPLATE_LIBRARY_STRATEGY.md`
-- `docs/migration/issues/README.md`
-- every child issue file in `docs/migration/issues/`
+## Foundation
 
-Objective:
-Create or update the migration tracker so a maintainer can see the overall plan, dependencies, sequencing, and status in one place.
+| Issue                                                                                | Status   | Dependency notes                                                                 | Definition of done for this workstream                                                                           |
+| ------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [01-template-catalog-and-manifest.md](01-template-catalog-and-manifest.md)           | `done`   | Opens the metadata contract used by pack and sync work.                          | Catalogue exists, manifest validation is runnable, and current versus planned entries are explicit.              |
+| [02-shared-packs.md](02-shared-packs.md)                                             | `done`   | Depends on issue 01 for stable IDs and authoritative metadata.                   | Each shared pack has a README, inventory, and source-of-truth ownership.                                         |
+| [03-agent-instructions-sync.md](03-agent-instructions-sync.md)                       | `done`   | Built on the extracted pack boundary and preserved the mirrored output workflow. | Global instruction blocks, local override pattern, and downstream sync workflow are documented and maintainable. |
+| [04-repo-settings-and-governance-tiers.md](04-repo-settings-and-governance-tiers.md) | `future` | Can start after issue 01, but should align with pack boundaries from issue 02.   | Governance tiers, required controls, and solo-maintainer caveats are documented in the hub.                      |
 
-Required work:
-1. Summarize the migration phases from the strategy document.
-2. Link every child issue and group them by foundation, first-wave templates, second-wave templates, and automation.
-3. Add dependency notes where one issue clearly blocks another.
-4. Add a lightweight status model (for example: todo / in progress / blocked / done).
-5. Keep the tracker concise, readable, and easy to maintain.
+## First-wave templates
 
-Constraints:
-- Stay within documentation and tracking scope only.
-- Do not invent new template families unless the strategy has changed in this repo.
-- Preserve the hub-and-spoke direction unless the repository docs now explicitly say otherwise.
+| Issue                                                                          | Status   | Dependency notes                                                                                                    | Definition of done for this workstream                                                               |
+| ------------------------------------------------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [05-template-power-platform-pcf.md](05-template-power-platform-pcf.md)         | `future` | Depends on issues 01, 02, and 04 for catalogue shape, shared packs, and governance defaults.                        | PCF template scope, docs, baseline CI, and shared-pack dependencies are publishable.                 |
+| [06-template-power-platform-codeapp.md](06-template-power-platform-codeapp.md) | `future` | Depends on issues 01, 02, and 04; should stay distinct from issues 05 and 13.                                       | Code App template scope, environment guidance, and governance dependencies are explicit.             |
+| [07-template-vite-web-app.md](07-template-vite-web-app.md)                     | `future` | Depends on issues 01, 02, and 04 so the app starter can reference the shared baseline instead of copying it ad hoc. | Interactive app starter boundary and default stack are documented clearly.                           |
+| [08-template-vite-site.md](08-template-vite-site.md)                           | `future` | Depends on issues 01, 02, and 04; should stay clearly separate from issue 07.                                       | Site-oriented starter boundary, publishing workflow, and shared dependencies are documented clearly. |
+| [10-governance-retrofit-pack.md](10-governance-retrofit-pack.md)               | `future` | The pack boundaries now exist; adoption guidance still depends on issue 04 governance tier guidance.                | GitHub and Azure DevOps retrofit adoption guidance is concise, versioned, and repeatable.            |
 
-Deliverables:
-- updated tracker markdown
-- any cross-links needed from the issue backlog index
+## Second-wave templates
 
-Validation:
-- run markdown formatting/checking used by the repo
-- ensure every issue in `docs/migration/issues/` is represented exactly once in the tracker
+| Issue                                                                                        | Status    | Dependency notes                                                                                             | Definition of done for this workstream                                                                 |
+| -------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| [09-tailwind-packaging-decision.md](09-tailwind-packaging-decision.md)                       | `blocked` | Wait for issues 07 and 08 so the Tailwind decision is made against clear Vite template boundaries.           | Tailwind is explicitly assigned to a pack/variant path or a dedicated repo path.                       |
+| [11-template-power-automate-knowledge-site.md](11-template-power-automate-knowledge-site.md) | `future`  | Depends on issues 01, 02, and 04; also benefits from the content-site boundary clarified in issue 08.        | Knowledge-site template scope, governance tier, and content workflow are documented clearly.           |
+| [12-template-home-assistant-automation.md](12-template-home-assistant-automation.md)         | `future`  | Depends on issues 01, 02, and 04 so the higher-control automation baseline is consistent.                    | Operations template scope, runbooks, secrets guidance, and stronger controls are explicit.             |
+| [13-template-power-platform-alm-governance.md](13-template-power-platform-alm-governance.md) | `future`  | Depends on issues 01, 02, and 04; should also reuse lessons from the existing `stampit-ado-governance` seed. | ALM governance template boundary, differentiators, and seed-to-template migration path are documented. |
 
-Final output expectation:
-Provide a short summary of tracker changes, list the commands you ran, and note any follow-up items the maintainer should decide manually.
-```
+## Automation
+
+| Issue                                                                                  | Status    | Dependency notes                                                                                                                             | Definition of done for this workstream                                               |
+| -------------------------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [14-sync-automation-and-drift-detection.md](14-sync-automation-and-drift-detection.md) | `blocked` | Depends on issues 01, 02, and 03 because sync automation now has stable metadata, defined packs, and an instruction-sharing model to extend. | Maintainers can sync packs predictably and detect drift without hidden manual steps. |
+
+## Maintainer sequencing notes
+
+1. Finish issue 01 first so IDs, statuses, and manifest rules stop being implicit.
+2. Land issue 04 before publishing dedicated repos so each new template starts with an explicit governance tier instead of retrofitting controls later.
+3. Reuse the issue 03 instruction model when defining downstream repo scaffolds and sync automation.
+4. Treat issues 05 through 08 and 10 as the first publication milestone.
+5. Keep issue 09 as a decision gate before expanding frontend variants further.
+6. Delay issue 14 until the pack layout and shared instruction model are stable enough to automate.
+
+## Migration done when
+
+- Every child issue in `docs/migration/issues/` is `done`, `rejected`, or intentionally held in a named future milestone with an updated status here.
+- The hub repo states which catalogue metadata, packs, governance docs, and sync workflows are authoritative in `MyTemplates`.
+- Every dedicated template family has a clear destination: published as a repo, retained as a pack, or rejected with rationale.
+- Downstream template repos can tell which assets sync from the hub versus which assets they own locally.

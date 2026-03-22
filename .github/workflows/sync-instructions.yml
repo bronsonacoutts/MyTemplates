@@ -3,8 +3,11 @@ name: Sync Instructions
 on:
   push:
     paths:
+      - 'packs/ai-agent-instructions/global-instructions.md'
+      - 'agent-instructions.local.md'
       - 'agent-instructions.md'
       - '.github/copilot-instructions.md'
+      - 'scripts/sync-instructions.js'
 
 permissions:
   contents: write

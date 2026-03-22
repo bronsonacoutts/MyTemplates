@@ -174,6 +174,8 @@ Documentation templates and standards that AI tools can follow consistently.
 
 - [Doc standards](docs/DOC_STANDARDS.md)
 - [ADR template](docs/architecture/ADR_TEMPLATE.md)
+- [Template library strategy](docs/TEMPLATE_LIBRARY_STRATEGY.md)
+- [Template library issue backlog](docs/migration/issues/README.md)
 - [Style guide](docs/STYLE_GUIDE.md)
 - [Markdown lint config](.markdownlint.json) + CI enforcement
 - [Documentation prompt](vibe-coding/prompts/documentation.md)

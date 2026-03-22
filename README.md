@@ -222,6 +222,7 @@ Concrete walkthroughs showing the guardrails in action:
 - [Vibe Coding Guide](docs/VIBE_CODING.md) — golden-path workflow for AI-assisted development
 - [Usage Guide](docs/USAGE.md) — how to use and customise these templates
 - [Style Guide](docs/STYLE_GUIDE.md) — coding conventions and AI-assisted edit policy
+- [Template Repo Governance](docs/admin/TEMPLATE_REPO_GOVERNANCE.md) — governance tiers, repo settings, and manual GitHub controls for dedicated template repos
 - [Pattern Index](docs/PATTERNS.md) — key patterns with when-to-use guidance
 - [Testing Guide](docs/developer/TESTING.md) — full testing reference
 - [Developer Setup](docs/developer/SETUP.md) — local environment setup

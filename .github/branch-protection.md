@@ -2,6 +2,9 @@
 
 > This document describes the recommended branch protection rules for this repository.
 > These settings should be applied by a repository administrator via **Settings → Branches**.
+> For dedicated template repositories in the wider template ecosystem, use
+> [docs/admin/TEMPLATE_REPO_GOVERNANCE.md](../docs/admin/TEMPLATE_REPO_GOVERNANCE.md)
+> as the source of truth for tiered defaults and manual GitHub settings.
 
 ---
 

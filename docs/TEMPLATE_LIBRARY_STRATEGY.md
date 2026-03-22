@@ -41,7 +41,7 @@ Keep this repo as the source of truth for:
 - shared agent-instruction packs
 - docs-as-code packs
 - testing and release guardrails
-- repo settings guidance
+- repo settings guidance, including [template repo governance tiers](admin/TEMPLATE_REPO_GOVERNANCE.md)
 - template catalogue and manifest schema
 - migration guidance for downstream template repos
 
@@ -179,6 +179,8 @@ Allow each template repo to add a **small override section** for:
 - template-specific anti-patterns
 
 ## Governance and repo settings to standardize
+
+The authoritative tier model and settings checklist for dedicated template repos now live in [docs/admin/TEMPLATE_REPO_GOVERNANCE.md](admin/TEMPLATE_REPO_GOVERNANCE.md).
 
 Apply the same baseline defaults across dedicated template repos:
 

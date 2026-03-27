@@ -22,6 +22,20 @@ Add a machine-readable catalogue so the library can describe what exists, who it
 ```text
 You are working in the `MyTemplates` repository. Implement the template catalogue and manifest foundation described in the strategy docs.
 
+Model workflow:
+- First pass: run this prompt with `GPT-5.1-Codex-Max`.
+- Review pass: after the first pass is complete, run `GPT-5.3-Codex` either on this issue individually or as part of an overall cross-issue review.
+
+First-pass operating rules:
+1. Start with a short implementation plan listing target files, intended edits, and any open decisions.
+2. Keep scope tight to files directly needed for this issue. Do not do unrelated cleanup or repo-wide polish.
+3. If the repo evidence is not strong enough to support a default, leave an explicit maintainer decision instead of inventing one.
+
+Review-pass focus for `GPT-5.3-Codex`:
+- check for overlap, contradictions, or weak differentiation against adjacent templates/issues
+- check consistency with `docs/TEMPLATE_LIBRARY_STRATEGY.md`, governance docs, catalogue/roadmap entries, and existing terminology
+- apply minimal corrective edits or produce a precise file-by-file change list if a broader review is being run separately
+
 Read first:
 - `docs/TEMPLATE_LIBRARY_STRATEGY.md`
 - `README.md`
@@ -53,5 +67,5 @@ Validation:
 - verify catalogue entries match the current repository contents and strategy terminology
 
 Final output expectation:
-Summarize the new catalogue shape, list validation commands, and call out any fields that may need maintainer refinement later.
+Summarize the new catalogue shape, list validation commands, and call out any fields that may need maintainer refinement later. Also list changed files and any open maintainer decisions left unresolved after the first pass.
 ```

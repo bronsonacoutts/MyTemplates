@@ -39,10 +39,10 @@ cp .env.example .env
 # Edit .env with your local values
 
 # 4. Verify the setup
-npm run validate
+npm run validate:local
 ```
 
-If `npm run validate` completes without errors, your environment is correctly configured.
+If `npm run validate:local` completes without errors, your environment is correctly configured.
 
 ---
 
@@ -87,7 +87,7 @@ npm run type-check
 npm test
 
 # Run everything together
-npm run validate
+npm run validate:local
 ```
 
 ---
@@ -96,13 +96,21 @@ npm run validate
 
 Husky installs three git hooks automatically:
 
-| Hook         | Trigger                      | Action                                                |
-| ------------ | ---------------------------- | ----------------------------------------------------- |
-| `pre-commit` | Before each commit           | Runs lint-staged (lint + format staged files)         |
-| `commit-msg` | After writing commit message | Validates commit message against Conventional Commits |
-| `pre-push`   | Before pushing               | Validates branch name, type-checks, runs tests        |
+| Hook         | Trigger                      | Action                                                                           |
+| ------------ | ---------------------------- | -------------------------------------------------------------------------------- |
+| `pre-commit` | Before each commit           | Runs lint-staged, then `npm run validate:local`, then records a signal           |
+| `commit-msg` | After writing commit message | Appends the local validation trailers and validates Conventional Commits         |
+| `pre-push`   | Before pushing               | Validates branch name and only re-runs the full suite when the signal is missing |
 
 If a hook fails, the commit or push is blocked. Fix the reported issues and try again.
+
+Validated commits receive trailers that the cloud workflows can recognise:
+
+```text
+Local-Validation: passed
+Local-Validation-Checks: lint, format:check, test, type-check, validate:catalog
+Local-Validation-Source: husky-pre-commit
+```
 
 To **bypass hooks** in exceptional circumstances (not recommended):
 
@@ -110,6 +118,8 @@ To **bypass hooks** in exceptional circumstances (not recommended):
 git commit --no-verify -m "..."   # Skip pre-commit and commit-msg
 git push --no-verify              # Skip pre-push
 ```
+
+If hooks are bypassed, the draft-to-ready GitHub workflow chain becomes the fallback verification path.
 
 ---
 
@@ -154,7 +164,8 @@ npm run test:unit         # Unit tests with coverage
 npm run test:watch        # Watch mode for TDD
 npm run test:e2e          # E2E tests
 npm run build             # Compile TypeScript and build
-npm run validate          # lint + type-check + test
+npm run validate          # full local validation suite
+npm run validate:local    # preferred local-first validation path
 npm run sendit            # Interactive commit + push helper
 ```
 
@@ -172,6 +183,12 @@ npm run sendit            # Interactive commit + push helper
 - Ensure you ran `npm install` (not just `npm ci`).
 - Check that hook files are executable: `ls -la .husky/`
 - Re-install hooks: `npm run prepare`
+- If the validation trailers are missing from recent commits, re-run `npm run validate:local` and commit again without `--no-verify`.
+
+### PR checks did not start
+
+- The preferred automation profile only auto-starts when a PR moves from `draft` to `ready for review`.
+- If you pushed more commits after the PR was already open, rerun the workflows manually or convert the PR back to draft and then to ready again.
 
 ### TypeScript errors after pulling
 

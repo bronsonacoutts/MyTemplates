@@ -25,12 +25,13 @@ npm test
 - **Documenting decisions?** Start from [docs/architecture/ADR_TEMPLATE.md](architecture/ADR_TEMPLATE.md).
 - **Developer onboarding?** Reuse [docs/developer/SETUP.md](developer/SETUP.md) and [docs/developer/TESTING.md](developer/TESTING.md) as baseline runbooks.
 - **Governance and safety?** Keep [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md), [SECURITY.md](../SECURITY.md), and [CONTRIBUTING.md](../CONTRIBUTING.md) intact — they already reference the guardrails here.
+- **Need to choose your automation style?** Start with [docs/developer/AUTOMATION_PROFILES.md](developer/AUTOMATION_PROFILES.md) before copying the GitHub workflows and Husky hooks.
 
 ### Customising safely
 
 - Update badges and CODEOWNERS to match your org before publishing.
 - If you adjust coverage thresholds in [vitest.config.ts](../vitest.config.ts), document the rationale in your README to avoid silent quality creep.
-- When copying GitHub Actions from [.github/workflows](../.github/workflows), review secrets usage — this repo avoids secrets entirely; do the same where possible.
+- When copying GitHub Actions from [.github/workflows](../.github/workflows), decide whether you want the `preferred` local-first profile or the `standard` always-run cloud profile documented in [docs/developer/AUTOMATION_PROFILES.md](developer/AUTOMATION_PROFILES.md).
 
 ### Extending the templates
 
@@ -46,7 +47,7 @@ This repo is designed for AI-assisted development. The guardrails catch common A
 
 1. Browse [vibe-coding/prompts/](../vibe-coding/prompts/) and pick a prompt template for your task.
 2. Paste it into Copilot, ChatGPT, or Claude with your specific details filled in.
-3. Apply the output, then run `npm run validate`.
+3. Apply the output, then run `npm run validate:local`.
 4. Walk the [AI change checklist](../vibe-coding/guardrails/ai-change-checklist.md) before committing.
 
 **What the guardrails catch:**
@@ -56,6 +57,7 @@ This repo is designed for AI-assisted development. The guardrails catch common A
 - Missing test coverage (Vitest coverage gates)
 - Committed secrets (Gitleaks in CI)
 - Non-conventional commits and branch names (Husky hooks + CI)
+- Duplicate cloud checks after a passing local Husky run (validation trailers + workflow gates)
 
 **Full workflow guide:** [docs/VIBE_CODING.md](VIBE_CODING.md)
 

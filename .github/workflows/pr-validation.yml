@@ -3,17 +3,19 @@ name: PR Validation
 on:
   pull_request:
     types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
+      - ready_for_review
+
+concurrency:
+  group: pr-validation-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
-  validate-pr-title:
-    name: Validate PR Title
+  validate-pr-metadata:
+    name: Validate PR Metadata
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
+      contents: read
     steps:
       - name: Check PR title follows Conventional Commits
         uses: amannn/action-semantic-pull-request@v5
@@ -37,12 +39,6 @@ jobs:
           subjectPatternError: |
             The subject "{subject}" found in the PR title "{title}" is invalid.
             The subject must begin with a lowercase letter.
-
-  validate-branch-name:
-    name: Validate Branch Name
-    runs-on: ubuntu-latest
-    permissions: {}
-    steps:
       - name: Check branch name follows allowed patterns
         run: |
           BRANCH="${{ github.head_ref }}"
@@ -56,7 +52,7 @@ jobs:
             echo "❌ Branch name '$BRANCH' does not match the required pattern."
             echo ""
             echo "Branch names must follow the pattern: <prefix>/<description>"
-          echo "Allowed prefixes: feature, fix, hotfix, release, docs, refactor, test, chore, copilot, codex"
-          echo "Description must be lowercase kebab-case (e.g., feature/add-user-auth)"
-          exit 1
+            echo "Allowed prefixes: feature, fix, hotfix, release, docs, refactor, test, chore, copilot, codex"
+            echo "Description must be lowercase kebab-case (e.g., feature/add-user-auth)"
+            exit 1
           fi

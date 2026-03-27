@@ -191,7 +191,11 @@ npx playwright show-report
 
 ## CI Behavior
 
-- Unit tests with coverage run in the `test` job of `.github/workflows/ci.yml`.
-- CI fails if any coverage threshold is not met.
-- Coverage reports are uploaded as artifacts (retained for 7 days).
+- The preferred automation profile runs validation in this order:
+  1. Husky `pre-commit` runs `npm run validate:local`
+  2. `PR Validation` starts when a draft PR becomes ready for review
+  3. `CI Checks` starts only if `PR Validation` succeeds
+  4. `Tests` starts only if `CI Checks` succeeds
+- `CI Checks` and `Tests` inspect the latest commit for Husky validation trailers and skip duplicate cloud work when those trailers are present.
+- If Husky was bypassed or unavailable, the cloud workflows become the fallback path when the PR is marked ready.
 - E2E tests are not run in the standard CI pipeline by default — configure separately for environments with a running application.

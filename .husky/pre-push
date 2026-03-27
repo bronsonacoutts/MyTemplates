@@ -5,8 +5,13 @@ repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 if [ -d "$repo_root/node_modules" ]; then
   cd "$repo_root" || exit 1
   npm run validate:branch
-  npm run type-check
-  npm test
+
+  if node scripts/local-validation-signal.js inspect "lint,format:check,validate:catalog,type-check,test" HEAD >/dev/null 2>&1; then
+    echo "Skipping duplicate pre-push validation: local validation signal already covers the full suite."
+  else
+    echo "Local validation signal missing on HEAD. Running the full validation suite before push."
+    npm run validate:local
+  fi
 else
   echo "Skipping pre-push: project dependencies are not installed. Run npm install." >&2
 fi

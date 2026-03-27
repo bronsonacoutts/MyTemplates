@@ -42,7 +42,7 @@ Opinionated rules that match the existing linting and docs in this repo. Keep ch
 
 AI-generated code is welcome but must meet the same standards as hand-written code. No exceptions.
 
-- **Run `npm run validate` before committing.** This catches the most common
+- **Run `npm run validate:local` before committing.** This catches the most common
   AI mistakes: `any` types, missing imports, untested paths, and formatting
   drift.
 - **Generate tests alongside code.** Never accept a feature suggestion without also generating the corresponding unit tests.

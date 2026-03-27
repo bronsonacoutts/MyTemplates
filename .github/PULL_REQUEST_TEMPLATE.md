@@ -1,5 +1,7 @@
 ## Summary
 
+<!-- Open this PR as draft first. The preferred workflow chain starts when you change draft -> ready for review. -->
+
 <!-- Provide a concise description of WHAT this PR does and WHY. Link to the issue it addresses. -->
 
 Closes #<!-- issue number -->
@@ -68,6 +70,7 @@ Closes #<!-- issue number -->
 
 - [ ] PR title follows Conventional Commits format
 - [ ] Branch name follows naming conventions
+- [ ] PR was opened as draft and only marked ready after local validation completed
 - [ ] All CI checks pass
 - [ ] Requested review from a codeowner
 - [ ] All review comments resolved

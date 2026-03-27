@@ -48,8 +48,7 @@ Example: `feature/add-user-authentication`
    ```
 4. **Run tests** to ensure everything works
    ```bash
-   npm test
-   npm run type-check
+   npm run validate:local
    ```
 5. **Commit your changes** using conventional commits
    ```bash
@@ -59,7 +58,7 @@ Example: `feature/add-user-authentication`
    ```bash
    git push origin feature/your-feature-name
    ```
-7. **Create a Pull Request** on GitHub
+7. **Create a draft Pull Request** on GitHub, then mark it ready when you want the workflow chain to start
 
 ## 📝 Commit Message Guidelines
 
@@ -169,8 +168,9 @@ test('feature workflow @smoke', async ({ page }) => {
 ## 📦 Pull Request Process
 
 1. **Ensure all checks pass**
-   - CI workflow (lint, tests, build)
-   - CodeQL security scan
+   - PR Validation workflow
+   - CI Checks workflow
+   - Tests workflow
    - Coverage requirements met
 
 2. **Update documentation**
@@ -215,7 +215,7 @@ AI-generated code is welcome. Treat it exactly like code you wrote by hand — y
 
 ### Rules for AI-assisted PRs
 
-1. **Run `npm run validate` before pushing.** This catches the most common AI mistakes (type holes, missing tests, formatting drift).
+1. **Run `npm run validate:local` before pushing.** This matches the preferred Husky-first path and adds the validation signal that lets cloud checks skip duplicate work.
 2. **Generate tests alongside code.** Never submit AI-generated source without corresponding unit tests.
 3. **Walk the [AI change checklist](vibe-coding/guardrails/ai-change-checklist.md)** before opening the PR.
 4. **Fill in the PR template's AI-Assisted Changes section.** Reviewers use this to decide how carefully to read the diff.
@@ -229,6 +229,13 @@ AI-generated code is welcome. Treat it exactly like code you wrote by hand — y
 ### Recommended workflow
 
 See the [Vibe Coding Guide](docs/VIBE_CODING.md) for the full golden-path workflow covering prompt selection, validation, and PR submission.
+
+### Preferred PR flow
+
+1. Open the PR as `draft`.
+2. Let Husky complete the local validation suite.
+3. Mark the PR as `ready for review` when you want the GitHub workflow chain to start.
+4. If you push more commits afterwards, rerun the workflows manually or move the PR back to draft and then to ready again.
 
 ## 💬 Getting Help
 

@@ -1,7 +1,7 @@
 # MyTemplates
 
 **Templates + automations that let you vibe-code confidently** —
-fast feedback, consistent structure, safe merges, fewer regressions.
+fast feedback, consistent structure, safe merges, fewer wasted Actions minutes.
 
 [![CI](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/ci.yml/badge.svg)](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/codeql.yml/badge.svg)](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/codeql.yml)
@@ -24,7 +24,8 @@ What you get:
 - **Strict TypeScript** with zero-warning ESLint, Prettier formatting, and coverage gates.
 - **No-network unit tests** that stop AI-generated code from calling real APIs.
 - **Accessibility-first Playwright E2E tests** using ARIA locators, not brittle selectors.
-- **CI that runs in minutes** — lint, type-check, test, markdown lint, secret scan, CodeQL.
+- **Local-first automation** that lets Husky do the heavy lifting before cloud workflows run.
+- **Sequenced PR validation** that only auto-starts when a draft PR becomes ready for review.
 - **Prompt templates** you can paste directly into Copilot or ChatGPT.
 - **Guardrail checklists** for reviewing AI-generated code.
 - **PR and issue templates** with an explicit "AI-assisted changes" section.
@@ -41,13 +42,11 @@ What you get:
    specific task. The prompt already includes the repo's constraints
    (strict TS, no `any`, mock network calls, JSDoc required).
 3. **Apply the output.** Copy the AI's response into your editor.
-4. **Run `npm run validate`.** This single command runs lint +
-   type-check + tests. If it passes, you're 90% safe.
+4. **Run `npm run validate:local`.** This mirrors the preferred Husky-first validation path.
 5. **Walk the checklist.** Use the
    [AI change checklist](vibe-coding/guardrails/ai-change-checklist.md)
    to catch what automation can't.
-6. **Open a PR.** The [PR template](.github/PULL_REQUEST_TEMPLATE.md)
-   has an "AI-Assisted Changes" section — fill it in honestly.
+6. **Open a draft PR, then mark it ready when you're done.** The automation chain only auto-starts on the draft-to-ready transition.
 
 ### Example prompts to try
 
@@ -61,9 +60,9 @@ What you get:
 
 ### How to keep changes safe
 
-- **The guardrails are always on.** Husky pre-commit hooks run
-  lint-staged; pre-push runs the full validation suite. CI re-checks
-  everything.
+- **The guardrails are local-first.** Husky pre-commit runs lint-staged plus the full local validation suite, then stamps the commit with a validation signal.
+- **Cloud checks are sequenced.** `PR Validation` runs first when a draft PR becomes ready; `CI Checks` and `Tests` follow only after the previous workflow succeeds.
+- **Cloud duplication is reduced.** If Husky already stamped the latest commit, the heavy GitHub checks skip their duplicate work.
 - **Tests block network calls by default.** test/setup.ts replaces
   `fetch` and `XMLHttpRequest` with stubs that throw. AI-generated
   tests that forget to mock will fail immediately.
@@ -76,18 +75,17 @@ What you get:
 
 Automations that make vibe coding safe without slowing you down.
 
-| Guardrail                    | Where                                                                                                   | What it prevents                                           |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| ESLint zero-warnings         | CI + pre-commit hook                                                                                    | `any` types, unused imports, console.log, formatting drift |
-| TypeScript strict mode       | [tsconfig.json](tsconfig.json)                                                                          | Implicit any, unchecked index access, missing returns      |
-| No-network test harness      | [test/setup.ts](test/setup.ts)                                                                          | AI-generated tests calling real APIs                       |
-| Coverage gates (80/80/80/75) | [vitest.config.ts](vitest.config.ts)                                                                    | Shipping untested code                                     |
-| Gitleaks secret scan         | [CI workflow](.github/workflows/ci.yml)                                                                 | Committed credentials                                      |
-| CodeQL analysis              | [CodeQL workflow](.github/workflows/codeql.yml)                                                         | Security vulnerabilities in JS/TS                          |
-| Branch name validation       | [validate-branch.js](scripts/validate-branch.js) + [PR validation](.github/workflows/pr-validation.yml) | Non-standard branch names                                  |
-| PR title validation          | [PR validation](.github/workflows/pr-validation.yml)                                                    | Non-conventional commit titles                             |
-| Markdown lint                | [.markdownlint.json](.markdownlint.json) + CI                                                           | Documentation formatting drift                             |
-| Commitlint                   | [commitlint.config.js](commitlint.config.js) + commit-msg hook                                          | Non-conventional commit messages                           |
+| Guardrail                    | Where                                                                                                   | What it prevents                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| ESLint zero-warnings         | Husky + [CI Checks](.github/workflows/ci.yml)                                                           | `any` types, unused imports, console.log, formatting drift      |
+| TypeScript strict mode       | [tsconfig.json](tsconfig.json)                                                                          | Implicit any, unchecked index access, missing returns           |
+| No-network test harness      | [test/setup.ts](test/setup.ts)                                                                          | AI-generated tests calling real APIs                            |
+| Coverage gates (80/80/80/75) | [vitest.config.ts](vitest.config.ts)                                                                    | Shipping untested code                                          |
+| Local validation signal      | [local-validation-signal.js](scripts/local-validation-signal.js) + Husky hooks                          | Duplicate cloud CI and test execution after a passing local run |
+| CodeQL analysis              | [CodeQL workflow](.github/workflows/codeql.yml)                                                         | Security vulnerabilities in JS/TS                               |
+| Branch name validation       | [validate-branch.js](scripts/validate-branch.js) + [PR validation](.github/workflows/pr-validation.yml) | Non-standard branch names                                       |
+| PR title validation          | [PR validation](.github/workflows/pr-validation.yml)                                                    | Non-conventional commit titles                                  |
+| Commitlint                   | [commitlint.config.cjs](commitlint.config.cjs) + commit-msg hook                                        | Non-conventional commit messages                                |
 
 ---
 
@@ -122,11 +120,12 @@ Authoritative shared-pack inventories now live under [packs/](packs/README.md).
 
 | Area   | Name              | Purpose for vibe coding                                        | Link                                                             |
 | ------ | ----------------- | -------------------------------------------------------------- | ---------------------------------------------------------------- |
-| CI     | Main CI           | Lint, test, build, markdown lint, gitleaks                     | [ci.yml](.github/workflows/ci.yml)                               |
-| CI     | CodeQL            | Weekly + PR security analysis                                  | [codeql.yml](.github/workflows/codeql.yml)                       |
-| CI     | PR Validation     | Enforce conventional PR titles and branch names                | [pr-validation.yml](.github/workflows/pr-validation.yml)         |
+| CI     | PR Validation     | Ready-for-review gate for PR title and branch naming           | [pr-validation.yml](.github/workflows/pr-validation.yml)         |
+| CI     | CI Checks         | Sequenced lint, format, catalogue, and type-check verification | [ci.yml](.github/workflows/ci.yml)                               |
+| CI     | Tests             | Sequenced unit-test workflow after CI checks succeed           | [tests.yml](.github/workflows/tests.yml)                         |
+| CI     | CodeQL            | Weekly or manual security analysis                             | [codeql.yml](.github/workflows/codeql.yml)                       |
 | CI     | Release           | Tag-triggered release with notes validation                    | [release.yml](.github/workflows/release.yml)                     |
-| CI     | Sync Instructions | Keep agent-instructions.md and copilot-instructions.md in sync | [sync-instructions.yml](.github/workflows/sync-instructions.yml) |
+| CI     | Sync Instructions | Manual sync for generated instruction files                    | [sync-instructions.yml](.github/workflows/sync-instructions.yml) |
 | GitHub | PR Template       | Structured PR description with AI-assisted changes section     | [PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)     |
 | GitHub | Bug Report        | Issue template for bugs                                        | [bug_report.md](.github/ISSUE_TEMPLATE/bug_report.md)            |
 | GitHub | Feature Request   | Issue template for features                                    | [feature_request.md](.github/ISSUE_TEMPLATE/feature_request.md)  |
@@ -172,7 +171,7 @@ cd MyTemplates
 npm install
 
 # 2. Run the full validation suite
-npm run validate
+npm run validate:local
 
 # 3. Explore the vibe coding assets
 ls vibe-coding/prompts/
@@ -196,25 +195,28 @@ Concrete walkthroughs showing the guardrails in action:
 
 ## Development scripts
 
-| Script                           | Description                                         |
-| -------------------------------- | --------------------------------------------------- |
-| `npm run validate`               | Lint + type-check + test (the one command you need) |
-| `npm run validate:catalog`       | Validate template catalogue and manifest metadata   |
-| `npm run lint`                   | ESLint with zero warnings                           |
-| `npm run lint:fix`               | Auto-fix lint issues                                |
-| `npm run lint:md`                | Markdown lint                                       |
-| `npm run format`                 | Prettier format all files                           |
-| `npm run format:check`           | Check formatting without writing                    |
-| `npm test`                       | Unit tests                                          |
-| `npm run test:unit`              | Unit tests with coverage                            |
-| `npm run test:watch`             | Watch mode for TDD                                  |
-| `npm run test:e2e`               | Full Playwright E2E suite                           |
-| `npm run test:e2e:smoke`         | Smoke tests only (`@smoke` tag)                     |
-| `npm run type-check`             | TypeScript strict type check                        |
-| `npm run build`                  | Compile and build                                   |
-| `npm run validate:branch`        | Check branch name                                   |
-| `npm run validate:release-notes` | Check release notes format                          |
-| `npm run sendit`                 | Interactive commit + push helper                    |
+| Script                           | Description                                             |
+| -------------------------------- | ------------------------------------------------------- |
+| `npm run ci:checks`              | Lint + format check + catalogue validation + type-check |
+| `npm run ci:tests`               | Unit tests used by the cloud test workflow              |
+| `npm run validate`               | Full local validation suite                             |
+| `npm run validate:local`         | Alias for the preferred local-first validation path     |
+| `npm run validate:catalog`       | Validate template catalogue and manifest metadata       |
+| `npm run lint`                   | ESLint with zero warnings                               |
+| `npm run lint:fix`               | Auto-fix lint issues                                    |
+| `npm run lint:md`                | Markdown lint                                           |
+| `npm run format`                 | Prettier format all files                               |
+| `npm run format:check`           | Check formatting without writing                        |
+| `npm test`                       | Unit tests                                              |
+| `npm run test:unit`              | Unit tests with coverage                                |
+| `npm run test:watch`             | Watch mode for TDD                                      |
+| `npm run test:e2e`               | Full Playwright E2E suite                               |
+| `npm run test:e2e:smoke`         | Smoke tests only (`@smoke` tag)                         |
+| `npm run type-check`             | TypeScript strict type check                            |
+| `npm run build`                  | Compile and build                                       |
+| `npm run validate:branch`        | Check branch name                                       |
+| `npm run validate:release-notes` | Check release notes format                              |
+| `npm run sendit`                 | Interactive commit + push helper                        |
 
 ---
 
@@ -226,6 +228,7 @@ Concrete walkthroughs showing the guardrails in action:
 - [Template Repo Governance](docs/admin/TEMPLATE_REPO_GOVERNANCE.md) — governance tiers, repo settings, and manual GitHub controls for dedicated template repos
 - [Pattern Index](docs/PATTERNS.md) — key patterns with when-to-use guidance
 - [Testing Guide](docs/developer/TESTING.md) — full testing reference
+- [Automation Profiles](docs/developer/AUTOMATION_PROFILES.md) — preferred vs standard GitHub automation setups
 - [Developer Setup](docs/developer/SETUP.md) — local environment setup
 - [Release Process](docs/developer/RELEASE_PROCESS.md) — how releases work
 - [Doc Standards](docs/DOC_STANDARDS.md) — documentation formatting rules
@@ -237,7 +240,7 @@ Concrete walkthroughs showing the guardrails in action:
 Contributions welcome — including AI-assisted ones. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide, including our AI-assisted contribution policy.
 
 Security reports: follow [SECURITY.md](SECURITY.md).
-No secrets in code — gitleaks will fail CI if it finds any.
+No secrets in code.
 
 ## Licence
 

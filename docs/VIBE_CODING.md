@@ -40,7 +40,7 @@ Copy the AI-generated code into your editor. **Do not commit yet.**
 ### 3. Run the validation suite
 
 ```bash
-npm run validate
+npm run validate:local
 ```
 
 This single command runs:
@@ -66,13 +66,15 @@ missing edge cases.
 npm run sendit
 ```
 
-The interactive helper enforces conventional commits. Husky hooks run lint-staged on pre-commit and the full validation suite on pre-push.
+The interactive helper enforces conventional commits. Husky runs lint-staged plus the full local validation suite before commit, then stamps validated commits with trailers that the cloud workflows can recognise.
 
 ### 6. Open a PR
 
 The [PR template](../.github/PULL_REQUEST_TEMPLATE.md) has an
 **AI-Assisted Changes** section. Fill it in honestly — reviewers
 use this to calibrate how carefully they read the diff.
+
+Open the PR as a draft first. The preferred workflow chain only auto-starts when you change the PR to **Ready for review**.
 
 ---
 
@@ -116,9 +118,7 @@ warning  Unexpected console statement  no-console
 
 ### Failure: AI commits a hardcoded API key
 
-**What catches it:** Gitleaks in CI.
-
-**What you see:** CI fails with a gitleaks finding showing the file and line.
+**What catches it:** Code review, branch protection, and any secret-scanning workflow you keep in your downstream repo.
 
 **What to do:** Remove the key, rotate it immediately, and use environment variables instead.
 

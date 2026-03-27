@@ -1,15 +1,15 @@
-name: CI Checks
+name: Tests
 
 on:
   workflow_run:
     workflows:
-      - PR Validation
+      - CI Checks
     types:
       - completed
   workflow_dispatch:
 
 concurrency:
-  group: ci-checks-${{ github.event.workflow_run.head_sha || github.sha }}
+  group: tests-${{ github.event.workflow_run.head_sha || github.sha }}
   cancel-in-progress: true
 
 jobs:
@@ -19,23 +19,23 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: Require successful PR validation
+      - name: Require successful CI checks
         if: github.event_name == 'workflow_run'
         run: |
           if [ "${{ github.event.workflow_run.conclusion }}" != "success" ]; then
-            echo "PR Validation concluded with ${{ github.event.workflow_run.conclusion }}."
+            echo "CI Checks concluded with ${{ github.event.workflow_run.conclusion }}."
             exit 1
           fi
 
   decide:
-    name: Decide Whether Cloud CI Is Needed
+    name: Decide Whether Cloud Tests Are Needed
     needs: gate
     runs-on: ubuntu-latest
     permissions:
       contents: read
     outputs:
       head_sha: ${{ steps.context.outputs.head_sha }}
-      skip_ci: ${{ steps.signal.outputs.skip_ci }}
+      skip_tests: ${{ steps.signal.outputs.skip_tests }}
     steps:
       - name: Select commit to inspect
         id: context
@@ -55,17 +55,17 @@ jobs:
         id: signal
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "skip_ci=false" >> "$GITHUB_OUTPUT"
-          elif node scripts/local-validation-signal.js inspect "lint,format:check,validate:catalog,type-check" "${{ steps.context.outputs.head_sha }}"; then
-            echo "skip_ci=true" >> "$GITHUB_OUTPUT"
+            echo "skip_tests=false" >> "$GITHUB_OUTPUT"
+          elif node scripts/local-validation-signal.js inspect "test" "${{ steps.context.outputs.head_sha }}"; then
+            echo "skip_tests=true" >> "$GITHUB_OUTPUT"
           else
-            echo "skip_ci=false" >> "$GITHUB_OUTPUT"
+            echo "skip_tests=false" >> "$GITHUB_OUTPUT"
           fi
 
-  ci-checks:
-    name: Run Cloud CI Checks
+  unit-tests:
+    name: Run Cloud Unit Tests
     needs: decide
-    if: needs.decide.outputs.skip_ci != 'true'
+    if: needs.decide.outputs.skip_tests != 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -84,39 +84,39 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run CI checks
-        run: npm run ci:checks
+      - name: Run unit tests
+        run: npm run ci:tests
 
-  ci-result:
-    name: CI Checks Result
+  tests-result:
+    name: Tests Result
     if: always()
     needs:
       - gate
       - decide
-      - ci-checks
+      - unit-tests
     runs-on: ubuntu-latest
     permissions: {}
     steps:
-      - name: Finalise CI result
+      - name: Finalise tests result
         run: |
           if [ "${{ needs.gate.result }}" != "success" ]; then
-            echo "The upstream PR validation workflow failed."
+            echo "The upstream CI workflow failed."
             exit 1
           fi
 
           if [ "${{ needs.decide.result }}" != "success" ]; then
-            echo "The CI gating decision failed."
+            echo "The test gating decision failed."
             exit 1
           fi
 
-          if [ "${{ needs.decide.outputs.skip_ci }}" = "true" ]; then
-            echo "Cloud CI checks were skipped because Husky already stamped this commit."
+          if [ "${{ needs.decide.outputs.skip_tests }}" = "true" ]; then
+            echo "Cloud tests were skipped because Husky already stamped this commit."
             exit 0
           fi
 
-          if [ "${{ needs.ci-checks.result }}" != "success" ]; then
-            echo "Cloud CI checks did not complete successfully."
+          if [ "${{ needs.unit-tests.result }}" != "success" ]; then
+            echo "Cloud tests did not complete successfully."
             exit 1
           fi
 
-          echo "Cloud CI checks passed."
+          echo "Cloud tests passed."

@@ -38,3 +38,4 @@ The authoritative files for this pack live in:
 
 - Runtime-specific test suites can extend this baseline, but the no-network harness should remain intact unless the downstream repo documents an intentional exception.
 - CI wiring that executes these checks belongs to the github-governance pack.
+- In the preferred profile, Husky runs this baseline locally first and GitHub Actions only re-runs it when the commit lacks the local validation trailers.

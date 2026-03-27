@@ -36,9 +36,10 @@ Files in other packs should not be copied into this pack's sync scope unless the
 | `.github/ISSUE_TEMPLATE/feature_request.md` | Issue intake          | Feature request template.                               |
 | `.github/ISSUE_TEMPLATE/config.yml`         | Issue intake          | Issue template chooser settings.                        |
 | `.github/branch-protection.md`              | Ruleset guidance      | Manual GitHub settings reference.                       |
-| `.github/workflows/ci.yml`                  | CI baseline           | Lint, format, catalogue validation, and tests.          |
+| `.github/workflows/ci.yml`                  | CI baseline           | Sequenced lint, format, catalogue validation, and type-check workflow. |
+| `.github/workflows/tests.yml`               | Test automation       | Sequenced unit-test workflow that runs after CI checks. |
 | `.github/workflows/codeql.yml`              | Security automation   | CodeQL analysis workflow.                               |
-| `.github/workflows/pr-validation.yml`       | PR governance         | Conventional PR title and branch enforcement.           |
+| `.github/workflows/pr-validation.yml`       | PR governance         | Ready-for-review PR title and branch enforcement.       |
 | `.github/workflows/copilot-setup-steps.yml` | Repo automation       | Shared Copilot environment bootstrap steps.             |
 | `CODE_OF_CONDUCT.md`                        | Repo policy           | Community conduct baseline.                             |
 | `CONTRIBUTING.md`                           | Contribution policy   | Contributor workflow and expectations.                  |
@@ -50,4 +51,5 @@ Files in other packs should not be copied into this pack's sync scope unless the
 ## Sync Notes
 
 - Prefer syncing this pack into `.github/`, repo-policy files, and governance scripts as a cohesive unit.
+- Decide up front whether the downstream repo wants the preferred local-first automation profile or the standard always-run cloud profile documented in `docs/developer/AUTOMATION_PROFILES.md`.
 - Release automation belongs to the release-management pack, even when consumed through GitHub Actions.

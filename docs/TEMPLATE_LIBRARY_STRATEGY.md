@@ -126,6 +126,7 @@ MyTemplates/
 │   ├── decision-tree.md
 │   └── roadmap.md
 ├── packs/
+│   ├── codex-local-agent-instructions/
 │   ├── github-governance/
 │   ├── azure-devops-governance/
 │   ├── ai-agent-instructions/

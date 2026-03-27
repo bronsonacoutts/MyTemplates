@@ -11,6 +11,7 @@ This first implementation is intentionally additive:
 
 Current packs:
 
+- [codex-local-agent-instructions](codex-local-agent-instructions/README.md)
 - [github-governance](github-governance/README.md)
 - [azure-devops-governance](azure-devops-governance/README.md)
 - [ai-agent-instructions](ai-agent-instructions/README.md)

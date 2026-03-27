@@ -153,6 +153,7 @@ Authoritative shared-pack inventories now live under [packs/](packs/README.md).
 
 Reusable pack boundaries are now documented under [packs/](packs/README.md):
 
+- [Codex Local Agent Instructions Pack](packs/codex-local-agent-instructions/README.md)
 - [GitHub Governance Pack](packs/github-governance/README.md)
 - [Azure DevOps Governance Pack](packs/azure-devops-governance/README.md)
 - [AI Agent Instructions Pack](packs/ai-agent-instructions/README.md)

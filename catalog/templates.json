@@ -51,6 +51,20 @@
       "notes": "Migration backlog files remain hub-owned even though the documentation standards pack is now defined."
     },
     {
+      "id": "pack.codex-local-agent-instructions",
+      "name": "Codex Local Agent Instructions Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["Codex local users", "template maintainers"],
+      "stack": ["Markdown", "Codex", "AGENTS.md"],
+      "summary": "Copyable AGENTS.md and AGENTS.local.md templates for repositories used with Codex local installations.",
+      "path": "packs/codex-local-agent-instructions",
+      "phase": "phase-1",
+      "backlog": ["docs/migration/issues/02-shared-packs.md"],
+      "notes": "Provides a local-first instruction pack shape without replacing the shared AI agent instructions pack."
+    },
+    {
       "id": "pack.github-governance",
       "name": "GitHub Governance Pack",
       "type": "pack",

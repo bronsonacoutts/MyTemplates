@@ -174,13 +174,14 @@
       "id": "template.power-platform-pcf",
       "name": "Power Platform PCF Template",
       "type": "template",
-      "status": "planned",
-      "maturity": "planned",
+      "status": "present",
+      "maturity": "incubating",
       "audience": ["PCF developers", "Power Platform engineering teams"],
       "stack": ["TypeScript", "PAC CLI", "Packaging", "Testing"],
       "summary": "Dedicated repo starter for Power Apps Component Framework controls with packaging, ALM, and testing guidance.",
       "phase": "phase-2",
-      "backlog": ["docs/migration/issues/05-template-power-platform-pcf.md"]
+      "backlog": ["docs/migration/issues/05-template-power-platform-pcf.md"],
+      "notes": "Definition: docs/migration/templates/template-power-platform-pcf.md. Repo: bronsonacoutts/template-power-platform-pcf (template repo)."
     },
     {
       "id": "template.commitship-ado-governance",

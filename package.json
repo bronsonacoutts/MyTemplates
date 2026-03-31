@@ -23,6 +23,8 @@
     "validate": "npm run ci:checks && npm run ci:tests",
     "validate:local": "npm run ci:checks && npm run ci:tests",
     "sync-instructions": "node scripts/sync-instructions.js",
+    "sync-pack": "node scripts/sync-pack.js",
+    "detect-drift": "node scripts/detect-drift.js",
     "prepare": "husky install && node scripts/sync-instructions.js",
     "pre-commit": "lint-staged",
     "sendit": "node scripts/sendit.js"

@@ -32,12 +32,12 @@ Choose a **pack** when the consumer already has a repo and mainly needs reusable
 
 ## Practical examples
 
-| Need                                                                               | Choose   | Why                                                                        |
-| ---------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------- |
-| A starter for interactive Vite SPAs with tests and app-focused docs                | Template | It has a distinct runtime, onboarding path, and CI surface.                |
-| GitHub governance files for an existing repo that keeps its current runtime        | Pack     | The repo already exists and only needs shared controls layered in.         |
+| Need                                                                                  | Choose   | Why                                                                        |
+| ------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------- |
+| A starter for interactive Vite SPAs with tests and app-focused docs                   | Template | It has a distinct runtime, onboarding path, and CI surface.                |
+| GitHub governance files for an existing repo that keeps its current runtime           | Pack     | The repo already exists and only needs shared controls layered in.         |
 | A Power Platform ALM/governance starter that grows out of `commitship-ado-governance` | Template | The delivery story centers on ALM docs, release gates, and repo structure. |
-| AI instruction defaults reused across every downstream repo                        | Pack     | The same files should be synced broadly without creating a new starter.    |
+| AI instruction defaults reused across every downstream repo                           | Pack     | The same files should be synced broadly without creating a new starter.    |
 
 ## Default when unsure
 

@@ -4,6 +4,7 @@
 > Edit those source files and run `npm run sync-instructions`.
 > `agent-instructions.md` and `.github/copilot-instructions.md` must remain identical.
 
+
 ## Shared AI Governance
 
 ### Instruction Priority

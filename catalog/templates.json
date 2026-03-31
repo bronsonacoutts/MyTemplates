@@ -221,13 +221,15 @@
       "id": "template.vite-web-app",
       "name": "Vite Web App Template",
       "type": "template",
-      "status": "planned",
-      "maturity": "planned",
+      "status": "present",
+      "maturity": "incubating",
       "audience": ["frontend engineers", "interactive SPA teams"],
       "stack": ["Vite", "TypeScript", "Vitest", "Playwright"],
       "summary": "Dedicated repo starter for interactive Vite applications with strict TypeScript, tests, and extendable runtime guardrails.",
+      "path": "docs/reference/TEMPLATE_VITE_WEB_APP.md",
       "phase": "phase-2",
-      "backlog": ["docs/migration/issues/07-template-vite-web-app.md"]
+      "backlog": ["docs/migration/issues/07-template-vite-web-app.md"],
+      "notes": "Template definition published at docs/reference/TEMPLATE_VITE_WEB_APP.md"
     }
   ]
 }

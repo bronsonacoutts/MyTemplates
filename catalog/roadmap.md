@@ -23,10 +23,11 @@ This roadmap maps catalogue IDs to the migration plan so maintainers can see wha
 
 | ID                                 | Status  | Migration outcome                                                        | Backlog                                 |
 | ---------------------------------- | ------- | ------------------------------------------------------------------------ | --------------------------------------- |
-| `template.power-platform-pcf`      | Planned | Dedicated PCF control starter with packaging, testing, and ALM guidance. | `05-template-power-platform-pcf.md`     |
-| `template.power-platform-code-app` | Planned | Dedicated Code App starter with environment and deployment guidance.     | `06-template-power-platform-codeapp.md` |
+| `template.power-platform-pcf`      | Present | Dedicated PCF control starter with packaging, testing, and ALM guidance. | `05-template-power-platform-pcf.md`     |
+| `template.power-platform-code-app` | Present | Dedicated Code App starter with environment and deployment guidance.     | `06-template-power-platform-codeapp.md` |
 | `template.vite-web-app`            | Present | Dedicated starter for interactive SPA work. Definition published.        | `07-template-vite-web-app.md`           |
-| `template.vite-site`               | Planned | Dedicated starter for content, documentation, and marketing sites.       | `08-template-vite-site.md`              |
+| `template.vite-site`               | Present | Dedicated starter for content, documentation, and marketing sites.       | `08-template-vite-site.md`              |
+
 | ID                                 | Status  | Migration outcome                                                          | Backlog                                 |
 | ---------------------------------- | ------- | -------------------------------------------------------------------------- | --------------------------------------- |
 | `template.power-platform-pcf`      | Planned | Dedicated PCF control starter with packaging, testing, and ALM guidance.   | `05-template-power-platform-pcf.md`     |

@@ -82,6 +82,19 @@
       "notes": "Release-specific automation is intentionally owned by the release-management pack."
     },
     {
+      "id": "pack.governance-retrofit",
+      "name": "Governance Retrofit Pack",
+      "type": "pack",
+      "status": "present",
+      "maturity": "incubating",
+      "audience": ["existing repo maintainers", "governance-focused teams"],
+      "stack": ["GitHub Actions", "Azure DevOps", "Markdown"],
+      "summary": "Umbrella offering that allows maintainers to adopt the governance and documentation guardrails from this repo without changing their runtime stack or app architecture.",
+      "path": "docs/reference/TEMPLATE_GOVERNANCE_RETROFIT.md",
+      "phase": "phase-2",
+      "backlog": ["docs/migration/issues/10-governance-retrofit-pack.md"]
+    },
+    {
       "id": "pack.release-management",
       "name": "Release Management Pack",
       "type": "pack",

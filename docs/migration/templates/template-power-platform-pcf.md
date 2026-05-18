@@ -1,5 +1,11 @@
 # Power Platform PCF Template Definition
 
+## Current implementation status
+
+- This hub-side definition remains the authoritative planning document for the PCF template family.
+- A dedicated scaffold repo exists at `bronsonacoutts/template-power-platform-pcf`.
+- Follow-up work is still open to keep the hub metadata and the downstream repo aligned on manifest shape, shared-pack consumption, and repo-local instruction overrides before this workstream is considered fully complete.
+
 ## Scope and Audience
 
 - Audience: PCF control developers, Power Platform engineering teams, and delivery leads who need repeatable packaging/ALM for controls.

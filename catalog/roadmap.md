@@ -21,12 +21,12 @@ This roadmap maps catalogue IDs to the migration plan so maintainers can see wha
 
 ## Phase 2: first-wave dedicated templates
 
-| ID                                 | Status                         | Migration outcome                                                                                                                             | Backlog                                 |
-| ---------------------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| `template.power-platform-pcf`      | Planned (definition published) | Dedicated PCF control starter with packaging, testing, and ALM guidance defined in `docs/migration/templates/template-power-platform-pcf.md`. | `05-template-power-platform-pcf.md`     |
-| `template.power-platform-code-app` | Planned                        | Dedicated Code App starter with environment and deployment guidance.                                                                          | `06-template-power-platform-codeapp.md` |
-| `template.vite-web-app`            | Planned                        | Dedicated starter for interactive SPA work.                                                                                                   | `07-template-vite-web-app.md`           |
-| `template.vite-site`               | Planned                        | Dedicated starter for content, documentation, and marketing sites.                                                                            | `08-template-vite-site.md`              |
+| ID                                 | Status                             | Migration outcome                                                                                                                                            | Backlog                                 |
+| ---------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- |
+| `template.power-platform-pcf`      | Present (alignment follow-up open) | Hub definition is published and a dedicated scaffold repo exists at `bronsonacoutts/template-power-platform-pcf`, but hub/downstream alignment work remains. | `05-template-power-platform-pcf.md`     |
+| `template.power-platform-code-app` | Planned                            | Dedicated Code App starter with environment and deployment guidance.                                                                                         | `06-template-power-platform-codeapp.md` |
+| `template.vite-web-app`            | Planned                            | Dedicated starter for interactive SPA work.                                                                                                                  | `07-template-vite-web-app.md`           |
+| `template.vite-site`               | Planned                            | Dedicated starter for content, documentation, and marketing sites.                                                                                           | `08-template-vite-site.md`              |
 
 ## Phase 3: automation and drift control
 
@@ -37,9 +37,10 @@ This roadmap maps catalogue IDs to the migration plan so maintainers can see wha
 
 ## Phase 4: second-wave expansion
 
-| ID                                       | Status  | Migration outcome                                                                                           | Backlog                                        |
-| ---------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `pack.tailwind-ui`                       | Planned | Keep Tailwind as a pack-first candidate unless the packaging decision proves a dedicated repo is warranted. | `09-tailwind-packaging-decision.md`            |
-| `template.power-automate-knowledge-site` | Planned | Lightweight knowledge-site starter for educational Power Automate content.                                  | `11-template-power-automate-knowledge-site.md` |
-| `template.operations-automation`         | Planned | Higher-control starter for automation-heavy operational repositories.                                       | `12-template-home-assistant-automation.md`     |
-| `template.power-platform-alm-governance` | Planned | Dedicated ALM and governance template grown from the current commitship seed.                               | `13-template-power-platform-alm-governance.md` |
+| ID                                       | Status  | Migration outcome                                                                                                                           | Backlog                                        |
+| ---------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `pack.tailwind-ui`                       | Planned | Keep Tailwind as a pack-first candidate unless the packaging decision proves a dedicated repo is warranted.                                 | `09-tailwind-packaging-decision.md`            |
+| `template.power-automate-knowledge-site` | Planned | Lightweight knowledge-site starter for educational Power Automate content.                                                                  | `11-template-power-automate-knowledge-site.md` |
+| `template.operations-automation`         | Planned | Higher-control starter for automation-heavy operational repositories.                                                                       | `12-template-home-assistant-automation.md`     |
+| `template.power-platform-alm-governance` | Planned | Dedicated ALM and governance template grown from the current commitship seed.                                                               | `13-template-power-platform-alm-governance.md` |
+| `template.typescript-monorepo`           | Planned | TypeScript-first monorepo starter for multiple apps and shared packages with workspace-aware validation and the shared governance baseline. | `15-template-monorepo-version.md`              |

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../catalog/template-manifest.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "template.power-platform-pcf",
+  "name": "Power Platform PCF Template",
+  "type": "template",
+  "status": "present",
+  "maturity": "incubating",
+  "audience": ["PCF developers", "Power Platform engineering teams"],
+  "stack": ["TypeScript", "PAC CLI", "PCF", "Testing"],
+  "summary": "Dedicated repo starter for Power Apps Component Framework controls with packaging, ALM, and testing guidance.",
+  "path": "docs/migration/templates/template-power-platform-pcf.md",
+  "phase": "phase-2",
+  "backlog": ["docs/migration/issues/05-template-power-platform-pcf.md"],
+  "notes": "Hub definition lives here. Dedicated scaffold repo: bronsonacoutts/template-power-platform-pcf. Follow-up alignment work remains open in issue 05."
+}

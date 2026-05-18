@@ -3,7 +3,6 @@
 **Templates + automations that let you vibe-code confidently** —
 fast feedback, consistent structure, safe merges, fewer wasted Actions minutes.
 
-
 ---
 
 ## What this repo is

@@ -32,3 +32,7 @@ Use [00-template-library-tracker.md](00-template-library-tracker.md) as the sequ
 - [11-template-power-automate-knowledge-site.md](11-template-power-automate-knowledge-site.md)
 - [12-template-home-assistant-automation.md](12-template-home-assistant-automation.md)
 - [13-template-power-platform-alm-governance.md](13-template-power-platform-alm-governance.md)
+
+## Deliberate expansion
+
+- [15-template-monorepo-version.md](15-template-monorepo-version.md)

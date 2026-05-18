@@ -1,0 +1,7 @@
+{
+  "name": "commitship",
+  "description": "A template for Commitship governance and automation.",
+  "version": "0.1.0",
+  "type": "governance-template",
+  "files": ["README.md"]
+}

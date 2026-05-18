@@ -87,10 +87,13 @@ if ($generated.Count -gt 0 -and [string]::IsNullOrWhiteSpace($env:REPO_ALLOW_GEN
 
 $governedDocChanged = @($files | Where-Object { $_ -match $governedDocPattern })
 if ($governedDocChanged.Count -gt 0) {
-    $requiredFiles = @('.github/copilot-instructions.md', '.github/agent-instructions.md')
-    foreach ($reqFile in $requiredFiles) {
-        if ($reqFile -notin $files) {
-            $errors.Add("Governed doc changed but '$reqFile' is not included in the same commit.")
+    $instructionCandidates = @('agent-instructions.md', '.github/copilot-instructions.md', '.github/agent-instructions.md')
+    $requiredFiles = @($instructionCandidates | Where-Object { Test-Path -LiteralPath $_ })
+    if ($requiredFiles.Count -gt 0) {
+        foreach ($reqFile in $requiredFiles) {
+            if ($reqFile -notin $files) {
+                $errors.Add("Governed doc changed but '$reqFile' is not included in the same commit.")
+            }
         }
     }
 }

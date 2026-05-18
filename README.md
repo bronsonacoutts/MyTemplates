@@ -3,9 +3,6 @@
 **Templates + automations that let you vibe-code confidently** —
 fast feedback, consistent structure, safe merges, fewer wasted Actions minutes.
 
-[![CI](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/ci.yml/badge.svg)](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/codeql.yml/badge.svg)](https://github.com/bronsonacoutts/MyTemplates/actions/workflows/codeql.yml)
-
 ---
 
 ## What this repo is

@@ -37,10 +37,20 @@ This roadmap maps catalogue IDs to the migration plan so maintainers can see wha
 
 ## Phase 4: second-wave expansion
 
-| ID                                       | Status  | Migration outcome                                                                                                                           | Backlog                                        |
+<<<<<<< HEAD
+| ID | Status | Migration outcome | Backlog |
 | ---------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `pack.tailwind-ui`                       | Planned | Keep Tailwind as a pack-first candidate unless the packaging decision proves a dedicated repo is warranted.                                 | `09-tailwind-packaging-decision.md`            |
-| `template.power-automate-knowledge-site` | Planned | Lightweight knowledge-site starter for educational Power Automate content.                                                                  | `11-template-power-automate-knowledge-site.md` |
-| `template.operations-automation`         | Planned | Higher-control starter for automation-heavy operational repositories.                                                                       | `12-template-home-assistant-automation.md`     |
-| `template.power-platform-alm-governance` | Planned | Dedicated ALM and governance template grown from the current commitship seed.                                                               | `13-template-power-platform-alm-governance.md` |
-| `template.typescript-monorepo`           | Planned | TypeScript-first monorepo starter for multiple apps and shared packages with workspace-aware validation and the shared governance baseline. | `15-template-monorepo-version.md`              |
+| `pack.tailwind-ui` | Planned | Keep Tailwind as a pack-first candidate unless the packaging decision proves a dedicated repo is warranted. | `09-tailwind-packaging-decision.md` |
+| `template.power-automate-knowledge-site` | Planned | Lightweight knowledge-site starter for educational Power Automate content. | `11-template-power-automate-knowledge-site.md` |
+| `template.operations-automation` | Planned | Higher-control starter for automation-heavy operational repositories. | `12-template-home-assistant-automation.md` |
+| `template.power-platform-alm-governance` | Planned | Dedicated ALM and governance template grown from the current commitship seed. | `13-template-power-platform-alm-governance.md` |
+| `template.typescript-monorepo` | Planned | TypeScript-first monorepo starter for multiple apps and shared packages with workspace-aware validation and the shared governance baseline. | `15-template-monorepo-version.md` |
+=======
+| ID | Status | Migration outcome | Backlog |
+| ---------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `pack.tailwind-ui` | Planned | Keep Tailwind as a pack-first candidate unless the packaging decision proves a dedicated repo is warranted. | `09-tailwind-packaging-decision.md` |
+| `template.power-automate-knowledge-site` | Planned | Lightweight knowledge-site starter for educational Power Automate content. | `11-template-power-automate-knowledge-site.md` |
+| `template.operations-automation` | Planned | Higher-control starter for automation-heavy operational repositories. | `12-template-home-assistant-automation.md` |
+| `template.power-platform-alm-governance` | Planned | Dedicated ALM and governance template grown from the current commitship seed. | `13-template-power-platform-alm-governance.md` |
+
+> > > > > > > 40f9932fc592cf4166876774ee419519c6774416

@@ -114,11 +114,11 @@ Edit the `$governedDocPattern` in `Test-CommitPolicy.ps1` to define which doc ch
 
 ## Enforcement Summary
 
-| Gate                                   | Script                          | Trigger                                     |
-| -------------------------------------- | ------------------------------- | ------------------------------------------- |
-| Commit message requires `AB#<id>`      | `Test-CommitMessage.ps1`        | `commit-msg` git hook                       |
-| Branch naming + protected branch guard | `Test-CommitPolicy.ps1`         | Called by `Invoke-Commitship.ps1`           |
-| No direct push to `main`/`release/*`   | `Test-PushPolicy.ps1`           | `pre-push` git hook                         |
+| Gate                                   | Script                          | Trigger                                        |
+| -------------------------------------- | ------------------------------- | ---------------------------------------------- |
+| Commit message requires `AB#<id>`      | `Test-CommitMessage.ps1`        | `commit-msg` git hook                          |
+| Branch naming + protected branch guard | `Test-CommitPolicy.ps1`         | Called by `Invoke-Commitship.ps1`              |
+| No direct push to `main`/`release/*`   | `Test-PushPolicy.ps1`           | `pre-push` git hook                            |
 | PR readiness before PR creation        | `Test-PullRequestReadiness.ps1` | Called by `Invoke-Commitship.ps1` + `pre-push` |
 
 ---
